@@ -9,7 +9,7 @@ namespace PeliculasEdwin.Models
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext()
-            : base("ConexionPCTrabajo")
+            : base("ConexionPCCasa")
         {
         }
         public DbSet<Pelicula> PeliculasEdwin { get; set; }
@@ -17,6 +17,7 @@ namespace PeliculasEdwin.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pelicula>().HasKey(x => x.Id);
+            modelBuilder.Entity<Pelicula>().ToTable("PeliculasEdwin");
 
         }
     }

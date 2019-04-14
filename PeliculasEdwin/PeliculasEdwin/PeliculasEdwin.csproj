@@ -164,6 +164,14 @@
     <Compile Include="Migrations\201904101947538_-CreacionTablaPeliculasEdwin.Designer.cs">
       <DependentUpon>201904101947538_-CreacionTablaPeliculasEdwin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904140405118_AdicionDeCampos.cs" />
+    <Compile Include="Migrations\201904140405118_AdicionDeCampos.Designer.cs">
+      <DependentUpon>201904140405118_AdicionDeCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904140409559_CambioDeNombreDeTabla.cs" />
+    <Compile Include="Migrations\201904140409559_CambioDeNombreDeTabla.Designer.cs">
+      <DependentUpon>201904140409559_CambioDeNombreDeTabla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Pelicula.cs" />
@@ -195,7 +203,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -210,9 +220,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RegistrarPelicula.cshtml" />
+    <Content Include="Views\Home\Ver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -225,6 +237,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904101947538_-CreacionTablaPeliculasEdwin.resx">
       <DependentUpon>201904101947538_-CreacionTablaPeliculasEdwin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904140405118_AdicionDeCampos.resx">
+      <DependentUpon>201904140405118_AdicionDeCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904140409559_CambioDeNombreDeTabla.resx">
+      <DependentUpon>201904140409559_CambioDeNombreDeTabla.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

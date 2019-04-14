@@ -1,0 +1,82 @@
+﻿@model PeliculasEdwin.Models.Pelicula
+
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2>Ver</h2>
+
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Título)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Título)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Género)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Género)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duración)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duración)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.País)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.País)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnCarTelera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnCarTelera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopsis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RutaDeImagen)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.RutaDeImagen)" width="250" height="250"/>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
