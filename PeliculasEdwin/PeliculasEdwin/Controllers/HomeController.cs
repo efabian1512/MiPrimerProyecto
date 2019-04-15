@@ -27,12 +27,14 @@ namespace PeliculasEdwin.Controllers
             //db.PeliculasEdwin.Add(prueba);
             //db.SaveChanges();
             //var prueba1 = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
-            return View();
+            var ModeloPeliculas =db.PeliculasEdwin.ToList();
+            return View(ModeloPeliculas);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
 
             return View();
         }
