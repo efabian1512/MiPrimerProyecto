@@ -26,11 +26,12 @@
                 </dt>*@
 
                 <dd>
-                    @{ var imagen =< @img src = "@Url.Content(Model.RutaDeImagen)" width = "250" height = "250" />}
+                    @*@{ var imagen =< @img src = "@Url.Content(Model.RutaDeImagen)" width = "250" height = "250" />}*@
                    
-                  @Html.ActionLink((< img src = "@Url.Content(Model.RutaDeImagen)" width = "250" height = "250" />).ToString()), "Ver", "Home", new { Id = imagenPelicula.Id }, null)
-
-
+                 @*@Html.ActionLink(imagenPelicula.RutaDeImagen, "Ver", "Home", new { Id = imagenPelicula.Id }, new { Imagen=imagenPelicula.RutaDeImagen})*@
+                    
+                   <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
+                    
                 </dd>
 
 
