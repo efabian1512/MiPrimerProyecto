@@ -44,6 +44,7 @@ namespace PeliculasEdwin.Models
         public string RutaDeImagen { get; set; }
         [ScaffoldColumn(false)]
         [NotMapped]
+        [Display(Name ="Cambiar Imagen de Portada")]
         public HttpPostedFileBase ArchivoDeImagen { get; set; }
 
 
