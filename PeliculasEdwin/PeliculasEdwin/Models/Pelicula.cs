@@ -46,6 +46,14 @@ namespace PeliculasEdwin.Models
         [NotMapped]
         [Display(Name ="Cambiar Imagen de Portada")]
         public HttpPostedFileBase ArchivoDeImagen { get; set; }
+        [Display(Name = "Archivo de Pelicula")]
+        public string RutaDeVideo { get; set; }
+
+        [ScaffoldColumn(false)]
+        [NotMapped]
+        [Display(Name = "Cambiar Video")]
+        public HttpPostedFileBase ArchivoDeVideo { get; set; }
+
 
 
     }

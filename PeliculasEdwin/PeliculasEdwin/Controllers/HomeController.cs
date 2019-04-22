@@ -15,11 +15,11 @@ namespace PeliculasEdwin.Controllers
         public ActionResult Index()
         {
 
-            var pelicula = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
-            //var pelicula1 = db.PeliculasEdwin.Where(x => x.Id == 2).FirstOrDefault();
-            pelicula.RutaDeImagen = "~/Images/268x0w192139811.png";
+            //var pelicula = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
+            ////var pelicula1 = db.PeliculasEdwin.Where(x => x.Id == 2).FirstOrDefault();
+            //pelicula.RutaDeImagen = "~/Images/268x0w192139811.png";
             //pelicula1.RutaDeImagen = "~/Images/A1t8xCe9jwL._SY679_190159757.jpg";
-            db.SaveChanges();
+            //db.SaveChanges();
             //Pelicula prueba = new Pelicula()
             //{
             //    Título = "Avengers",
@@ -69,7 +69,17 @@ namespace PeliculasEdwin.Controllers
                 pelicula.RutaDeImagen = "~/Images/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
                 pelicula.ArchivoDeImagen.SaveAs(fileName);
+                string fileNameVideo = Path.GetFileNameWithoutExtension(pelicula.ArchivoDeVideo.FileName);
+                string extensionVideo = Path.GetExtension(pelicula.ArchivoDeVideo.FileName);
+                fileNameVideo = fileNameVideo + DateTime.Now.ToString("yymmssff") + extension;
+                pelicula.RutaDeVideo = "~/Video/" + fileNameVideo;
+                fileNameVideo = Path.Combine(Server.MapPath("~/Video/"), fileNameVideo);
+                pelicula.ArchivoDeVideo.SaveAs(fileNameVideo);
+
+
                 db.PeliculasEdwin.Add(pelicula);
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index"); 
             }

@@ -78,7 +78,28 @@
 
     </dl>
 </div>
+
+
+<div>
+    <video width="1000" controls id="fm-video">
+        <source src=@Url.Content(Model.RutaDeVideo) type="video/mp4"/>
+    </video>
+
+</div>
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+@section scripts{
+    <script src="~/Scripts/video.js"></script>
+    <script src="~/Scripts/video.dev.js"></script>
+    <script>
+        var reproductor = videojs('fm-video', {
+
+        });
+    </script>
+    }
+
+
