@@ -59,7 +59,7 @@ namespace PeliculasEdwin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RegistrarPelicula([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen")]Pelicula pelicula)
+        public ActionResult RegistrarPelicula([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,ArchivoDeVideo")]Pelicula pelicula)
         {
             if (ModelState.IsValid)
             {

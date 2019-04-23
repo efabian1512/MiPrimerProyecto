@@ -81,8 +81,10 @@
 
 
 <div>
-    <video width="1000" controls id="fm-video">
-        <source src=@Url.Content(Model.RutaDeVideo) type="video/mp4"/>
+    <!--<video width="1000" controls id="fm-video">-->
+    <video width="1000" height="320"> 
+        @*<source src=@Url.Content(Model.RutaDeVideo) type="video/mp4*@
+                 <source src=@Url.Content(Model.RutaDeVideo)/>
     </video>
 
 </div>
