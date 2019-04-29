@@ -1,4 +1,5 @@
-﻿@model PeliculasEdwin.Models.Pelicula
+﻿@*<!DOCTYPE html>*@
+@model Pelicula
 
 @{
     ViewBag.Title = "Ver";
@@ -81,10 +82,11 @@
 
 
 <div>
-    <!--<video width="1000" controls id="fm-video">-->
-    <video width="1000" height="320"> 
-        @*<source src=@Url.Content(Model.RutaDeVideo) type="video/mp4*@
-                 <source src=@Url.Content(Model.RutaDeVideo)/>
+    <video controls width="500" height="300">
+   
+       
+        <source src="@Url.Content(Model.RutaDeVideo)" type="video/mp4" />
+       
     </video>
 
 </div>
@@ -94,7 +96,7 @@
 </p>
 
 
-@section scripts{
+@*@section scripts{
     <script src="~/Scripts/video.js"></script>
     <script src="~/Scripts/video.dev.js"></script>
     <script>
@@ -102,6 +104,6 @@
 
         });
     </script>
-    }
+    }*@
 
 

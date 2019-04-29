@@ -71,7 +71,7 @@ namespace PeliculasEdwin.Controllers
                 pelicula.ArchivoDeImagen.SaveAs(fileName);
                 string fileNameVideo = Path.GetFileNameWithoutExtension(pelicula.ArchivoDeVideo.FileName);
                 string extensionVideo = Path.GetExtension(pelicula.ArchivoDeVideo.FileName);
-                fileNameVideo = fileNameVideo + DateTime.Now.ToString("yymmssff") + extension;
+                fileNameVideo = fileNameVideo + DateTime.Now.ToString("yymmssff") + extensionVideo;
                 pelicula.RutaDeVideo = "~/Video/" + fileNameVideo;
                 fileNameVideo = Path.Combine(Server.MapPath("~/Video/"), fileNameVideo);
                 pelicula.ArchivoDeVideo.SaveAs(fileNameVideo);
