@@ -54,6 +54,8 @@ namespace PeliculasEdwin.Models
         [Display(Name = "Cambiar Video")]
         public HttpPostedFileBase ArchivoDeVideo { get; set; }
 
+        public List<Comentario> Comentarios { get; set; }
+
 
 
     }

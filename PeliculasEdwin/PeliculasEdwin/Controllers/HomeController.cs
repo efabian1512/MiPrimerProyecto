@@ -90,7 +90,7 @@ namespace PeliculasEdwin.Controllers
         public ActionResult Ver([Bind(Include ="Id")]Pelicula peliculaDetalles)
         {
 
-           var  ModeloPelicula = db.PeliculasEdwin.Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
+           var  ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
             return View(ModeloPelicula);
         }
         [HttpGet]
@@ -126,6 +126,28 @@ namespace PeliculasEdwin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
 
+
+        }
+        //[HttpPost]
+        //public ActionResult Comentarios([Bind(Include ="Contenido")] Comentario comentario, int idPelicula)
+        //{
+        //    var pelicula = db.PeliculasEdwin.Where(x => x.Id == idPelicula).FirstOrDefault();
+        //    comentario.Pelicula = pelicula;
+        //    var datos =  db.Comentarios.Add(comentario);
+        //    db.SaveChanges();
+        //    var PeliculaInfo = comentario.Pelicula;
+        //    return View("Ver", PeliculaInfo);
+            
+        //}
+        [HttpPost]
+        public JsonResult Comentarios([Bind(Include = "Contenido")] Comentario comentario, int idPelicula)
+        {
+            var pelicula = db.PeliculasEdwin.Where(x => x.Id == idPelicula).FirstOrDefault();
+            comentario.Pelicula = pelicula;
+            var datos = db.Comentarios.Add(comentario);
+            db.SaveChanges();
+            var PeliculaInfo = comentario.Pelicula;
+            return Json(comentario.Contenido);
 
         }
     }

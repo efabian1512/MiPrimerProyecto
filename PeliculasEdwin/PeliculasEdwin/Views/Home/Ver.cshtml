@@ -1,6 +1,7 @@
 ﻿@*<!DOCTYPE html>*@
 @model Pelicula
 
+
 @{
     ViewBag.Title = "Ver";
 }
@@ -90,20 +91,73 @@
     </video>
 
 </div>
+
+@*<div>
+   @using (Html.BeginForm("Comentarios", "Home",new { idPelicula =Model.Id}, FormMethod.Post,new { @class = "form-horizontal" }))
+   {
+       <br />
+       <br />
+       <br />
+       <label for="Contenido">Comentarios:</label><br />
+    <textarea name="Contenido"></textarea>
+    <input type="submit" value="Enviar" />
+   }
+
+</div>*@
+<div>
+    @using (Ajax.BeginForm("Comentarios", "Home", new { idPelicula = Model.Id },new AjaxOptions() {
+
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.InsertBefore,
+        UpdateTargetId = "divComentario"
+
+    }, new { @class = "form-horizontal" }))
+    {
+        <br />
+        <br />
+        <br />
+        <label for="Contenido">Comentarios:</label><br />
+        <textarea name="Contenido" cols="100" rows="5" id="txtContenido"></textarea><br /><br />
+        <input type="submit" value="Publicar" id="btnPublicar"/>
+
+    }
+
+</div>
+<br />
+<br />
+<div id="divComentario">
+    @foreach(var comentario in Model.Comentarios)
+    {
+        <h5>@comentario.Contenido</h5>
+    }
+
+</div><br />
+
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
 
-@*@section scripts{
-    <script src="~/Scripts/video.js"></script>
+@section scripts{
+    @*<script src="~/Scripts/video.js"></script>
     <script src="~/Scripts/video.dev.js"></script>
     <script>
         var reproductor = videojs('fm-video', {
 
         });
+    </script>*@
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $(function () {
+
+            $("#btnPublicar").Click(function () {
+                $("#txtContenido").val();
+            });
+        });
     </script>
-    }*@
+    }
+
+
 
 

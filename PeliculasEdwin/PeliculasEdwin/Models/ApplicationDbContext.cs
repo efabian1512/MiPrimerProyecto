@@ -13,11 +13,14 @@ namespace PeliculasEdwin.Models
         {
         }
         public DbSet<Pelicula> PeliculasEdwin { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pelicula>().HasKey(x => x.Id);
             modelBuilder.Entity<Pelicula>().ToTable("PeliculasEdwin");
+            modelBuilder.Entity<Comentario>().HasRequired(x => x.Pelicula);
+            modelBuilder.Entity<Comentario>().ToTable("Comentarios");
 
         }
     }

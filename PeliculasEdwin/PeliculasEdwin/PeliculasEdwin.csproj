@@ -176,8 +176,13 @@
     <Compile Include="Migrations\201904221914029_AdiciomVideos.Designer.cs">
       <DependentUpon>201904221914029_AdiciomVideos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904291525172_AdicionTablaComentarios.cs" />
+    <Compile Include="Migrations\201904291525172_AdicionTablaComentarios.Designer.cs">
+      <DependentUpon>201904291525172_AdicionTablaComentarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\Pelicula.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,6 +212,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -273,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904221914029_AdiciomVideos.resx">
       <DependentUpon>201904221914029_AdiciomVideos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904291525172_AdicionTablaComentarios.resx">
+      <DependentUpon>201904291525172_AdicionTablaComentarios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
