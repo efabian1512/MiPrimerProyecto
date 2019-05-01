@@ -118,11 +118,18 @@
         <br />
         <label for="Contenido">Comentarios:</label><br />
         <textarea name="Contenido" cols="100" rows="5" id="txtContenido"></textarea><br /><br />
-        <input type="submit" value="Publicar" id="btnPublicar"/>
+        <input type="button" value="Publicar" id="btnPublicar"/>
 
     }
 
 </div>
+@*<div id="divComentario1">
+    @foreach (var comentario in Model.Comentarios)
+    {
+        <h5>@comentario.Contenido</h5>
+    }
+
+</div><br />*@
 <br />
 <br />
 <div id="divComentario">
@@ -132,6 +139,8 @@
     }
 
 </div><br />
+
+
 
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
@@ -151,8 +160,17 @@
     <script>
         $(function () {
 
-            $("#btnPublicar").Click(function () {
-                $("#txtContenido").val();
+            $('#btnPublicar').click(function () {
+                var url = "@Url.Action("Comentarios","Home", new { idPelicula = Model.Id })";
+                var contenidoActual = $('#divComentario').val();
+                var Actual = { contenidoActual: contenidoActual };
+                var Contenido = $('#txtContenido').val();
+                var data = { Contenido: Contenido };
+                $.post(url,data).done(function(data){
+                    $('#divComentario').html(data).insertBefore(contenidoActual);
+                   
+                    $('#txtContenido').val('');
+                });
             });
         });
     </script>

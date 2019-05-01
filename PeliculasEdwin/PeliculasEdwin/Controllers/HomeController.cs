@@ -145,8 +145,12 @@ namespace PeliculasEdwin.Controllers
             var pelicula = db.PeliculasEdwin.Where(x => x.Id == idPelicula).FirstOrDefault();
             comentario.Pelicula = pelicula;
             var datos = db.Comentarios.Add(comentario);
+            
             db.SaveChanges();
+            var comentarios = db.Comentarios.Where(x => x.Id == idPelicula).ToList();
             var PeliculaInfo = comentario.Pelicula;
+            
+            //return Json(comentarios);
             return Json(comentario.Contenido);
 
         }
