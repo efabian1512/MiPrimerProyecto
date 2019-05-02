@@ -144,8 +144,15 @@
 
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+    @*@Html.ActionLink("Eliminar","Eliminar",new { id=Model.Id}) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div>
+    @using(Html.BeginForm("Eliminar","Home",new { id = Model.Id })) {
+        @Html.AntiForgeryToken();
+    <input type="button" value="Eliminar Pelicula" id="btnBorrar" />
+    }
+</div>
 
 
 @section scripts{
@@ -155,6 +162,43 @@
         var reproductor = videojs('fm-video', {
 
         });
+    </script>*@
+    <script>
+        $(function () {
+
+            $('#btnBorrar').click(function () {
+                var url = @Url.Action("Eliminar", "Home", new { id = Model.Id });
+                var id = @Model.Id;
+                var data = {id:id};
+                $.post(url,data).done(function(data){
+                    $('#divComentario').html(data);
+                   
+                    $('#txtContenido').val('');
+                });
+
+                var respuesta = confirm("¿Está seguro que desea eliminar el registro?")
+                if (respuesta == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            
+          
+        });
+    </script>
+    @*<script>
+
+        $(function ConfimarBorrado() {
+
+            var respuesta = confirm("¿Está seguro que desea eliminar el registro?")
+            if (respuesta == true) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+           
     </script>*@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
@@ -167,7 +211,7 @@
                 var Contenido = $('#txtContenido').val();
                 var data = { Contenido: Contenido };
                 $.post(url,data).done(function(data){
-                    $('#divComentario').html(data).insertBefore(contenidoActual);
+                    $('#divComentario').html(data);
                    
                     $('#txtContenido').val('');
                 });

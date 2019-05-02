@@ -255,6 +255,7 @@
     <Content Include="Views\Home\RegistrarPelicula.cshtml" />
     <Content Include="Views\Home\Ver.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
+    <Content Include="Views\Home\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

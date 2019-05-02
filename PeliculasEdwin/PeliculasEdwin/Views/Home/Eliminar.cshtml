@@ -1,0 +1,96 @@
+﻿@model Pelicula
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro de que quiere eliminar el registro?</h3>
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Título)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Título)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Género)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Género)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duración)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duración)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.País)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.País)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnCarTelera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnCarTelera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopsis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RutaDeImagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RutaDeImagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RutaDeVideo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RutaDeVideo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

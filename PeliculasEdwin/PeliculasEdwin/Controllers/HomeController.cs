@@ -34,7 +34,7 @@ namespace PeliculasEdwin.Controllers
             //db.PeliculasEdwin.Add(prueba);
             //db.SaveChanges();
             //var prueba1 = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
-            var ModeloPeliculas =db.PeliculasEdwin.ToList();
+            var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
         }
 
@@ -81,34 +81,36 @@ namespace PeliculasEdwin.Controllers
 
 
                 db.SaveChanges();
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Index");
             }
             ModelState.Clear();
             return View();
         }
         [HttpGet]
-        public ActionResult Ver([Bind(Include ="Id")]Pelicula peliculaDetalles)
+        public ActionResult Ver([Bind(Include = "Id")]Pelicula peliculaDetalles)
         {
 
-           var  ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
+            var ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
             return View(ModeloPelicula);
         }
         [HttpGet]
-        public ActionResult Editar(int ?id )
+        public ActionResult Editar(int? id)
         {
-            if (id.Equals(null)) {
+            if (id.Equals(null))
+            {
                 return RedirectToAction("Index");
             }
             var pelicula = db.PeliculasEdwin.Where(x => x.Id == id).FirstOrDefault();
 
             return View(pelicula);
         }
-       
+
 
         [HttpPost]
         public ActionResult Editar([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,RutaDeImagen")]Pelicula pelicula)
         {
-            if (pelicula.ArchivoDeImagen != null) {
+            if (pelicula.ArchivoDeImagen != null)
+            {
 
                 string fileName = Path.GetFileNameWithoutExtension(pelicula.ArchivoDeImagen.FileName);
                 string extension = Path.GetExtension(pelicula.ArchivoDeImagen.FileName);
@@ -116,7 +118,7 @@ namespace PeliculasEdwin.Controllers
                 pelicula.RutaDeImagen = "~/Images/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
                 pelicula.ArchivoDeImagen.SaveAs(fileName);
-               
+
                 db.Entry(pelicula).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -137,7 +139,7 @@ namespace PeliculasEdwin.Controllers
         //    db.SaveChanges();
         //    var PeliculaInfo = comentario.Pelicula;
         //    return View("Ver", PeliculaInfo);
-            
+
         //}
         [HttpPost]
         public JsonResult Comentarios([Bind(Include = "Contenido")] Comentario comentario, int idPelicula)
@@ -145,14 +147,24 @@ namespace PeliculasEdwin.Controllers
             var pelicula = db.PeliculasEdwin.Where(x => x.Id == idPelicula).FirstOrDefault();
             comentario.Pelicula = pelicula;
             var datos = db.Comentarios.Add(comentario);
-            
+
             db.SaveChanges();
             var comentarios = db.Comentarios.Where(x => x.Id == idPelicula).ToList();
             var PeliculaInfo = comentario.Pelicula;
-            
+
             //return Json(comentarios);
             return Json(comentario.Contenido);
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Eliminar(int? id)
+        {
+            Pelicula pelicula = db.PeliculasEdwin.Find(id);
+            db.PeliculasEdwin.Remove(pelicula);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
