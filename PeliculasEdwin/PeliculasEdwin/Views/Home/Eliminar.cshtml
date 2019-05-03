@@ -67,30 +67,54 @@
             @Html.DisplayFor(model => model.Sinopsis)
         </dd>
 
+        @*<dt>
+                @Html.DisplayNameFor(model => model.RutaDeImagen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RutaDeImagen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RutaDeVideo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RutaDeVideo)
+            </dd>*@
         <dt>
             @Html.DisplayNameFor(model => model.RutaDeImagen)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RutaDeImagen)
-        </dd>
+            <img src="@Url.Content(Model.RutaDeImagen)" width="250" height="250" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RutaDeVideo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RutaDeVideo)
         </dd>
 
     </dl>
+</div>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+<div>
+    <video controls width="500" height="300">
+
+
+        <source src="@Url.Content(Model.RutaDeVideo)" type="video/mp4" />
+
+    </video>
+
+</div>
+
+
+
+@using (Html.BeginForm("Eliminar", "Home", new { id = Model.Id }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
 </div>

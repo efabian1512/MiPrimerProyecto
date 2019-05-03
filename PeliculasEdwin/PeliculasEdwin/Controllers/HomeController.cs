@@ -156,6 +156,14 @@ namespace PeliculasEdwin.Controllers
             return Json(comentario.Contenido);
 
         }
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            var pelicula = db.PeliculasEdwin.Where(x => x.Id == id).FirstOrDefault();
+
+            return View(pelicula);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
