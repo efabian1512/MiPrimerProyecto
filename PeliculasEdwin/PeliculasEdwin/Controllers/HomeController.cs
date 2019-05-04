@@ -12,6 +12,7 @@ namespace PeliculasEdwin.Controllers
     public class HomeController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        [HttpGet]
         public ActionResult Index()
         {
 
@@ -36,6 +37,14 @@ namespace PeliculasEdwin.Controllers
             //var prueba1 = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
+        {
+            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(pelicula.Título)).ToList();
+            return View(modelo);
+
         }
 
         public ActionResult About()

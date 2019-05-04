@@ -1,7 +1,13 @@
-﻿@model List<PeliculasEdwin.Models.Pelicula>
+﻿@model List<Pelicula>
 
 
-
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+   
+<input type="text" name="Título" />
+    <input type="submit" value="Buscar" class="btn-success" />
+}
 
 
 
@@ -9,10 +15,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@{ 
-    var modelo = Model;
-    
-}
+
 
 @foreach (var imagenPelicula in Model)
 {
