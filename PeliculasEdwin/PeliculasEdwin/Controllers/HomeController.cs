@@ -40,9 +40,11 @@ namespace PeliculasEdwin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
+        //public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
+        public ActionResult Index(string term)
         {
-            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(pelicula.Título)).ToList();
+            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(term)).ToList();
+            db.Dispose();
             return View(modelo);
 
         }

@@ -5,7 +5,7 @@
 {
     @Html.AntiForgeryToken();
    
-<input type="text" name="Título" />
+<input type="text" name="Título" id="txtTitulo" />
     <input type="submit" value="Buscar" class="btn-success" />
 }
 
@@ -46,4 +46,23 @@
 
 
 
-           
+ @section scripts
+     {
+     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+     <script src="~/Scripts/jquery-ui.js"></script>
+<script>
+        $(function () {
+            $("#txtTitulo").({
+                source: "/Home/Index"
+            });
+
+
+
+        });
+
+</script>
+
+     }          
+
+
