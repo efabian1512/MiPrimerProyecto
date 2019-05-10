@@ -44,11 +44,16 @@ namespace PeliculasEdwin.Controllers
         public ActionResult Index(string term)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(term)).ToList();
-            db.Dispose();
+            //db.Dispose();
             return View(modelo);
 
         }
-
+        [HttpPost]
+        public JsonResult BuscarPeliculas(string palabra)
+        {
+            db.PeliculasEdwin.Where(x => x.Título.Contains(palabra)).ToList();
+            return Json(palabra);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -184,6 +189,16 @@ namespace PeliculasEdwin.Controllers
             db.PeliculasEdwin.Remove(pelicula);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult BuscarPelicula(string valorBusqueda)
+        {
+            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(valorBusqueda)).ToList();
+            //db.Dispose();
+            return View(modelo);
+
+
         }
     }
 }
