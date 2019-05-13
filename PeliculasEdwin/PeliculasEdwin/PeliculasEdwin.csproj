@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201904291525172_AdicionTablaComentarios.Designer.cs">
       <DependentUpon>201904291525172_AdicionTablaComentarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905121516109_ProcedimientosAlmacenados.cs" />
+    <Compile Include="Migrations\201905121516109_ProcedimientosAlmacenados.Designer.cs">
+      <DependentUpon>201905121516109_ProcedimientosAlmacenados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Comentario.cs" />
@@ -311,6 +315,7 @@
     <Content Include="Views\Home\Ver.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
     <Content Include="Views\Home\Eliminar.cshtml" />
+    <Content Include="Views\Home\Pruebas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904291525172_AdicionTablaComentarios.resx">
       <DependentUpon>201904291525172_AdicionTablaComentarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905121516109_ProcedimientosAlmacenados.resx">
+      <DependentUpon>201905121516109_ProcedimientosAlmacenados.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

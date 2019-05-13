@@ -1,24 +1,55 @@
 ﻿@model List<Pelicula>
 
+@*@using (Html.BeginForm()) {*@ 
 
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken();
    
-<input type="text" name="Título" id="txtTitulo" placeholder="=Buscar"/>
-    @*<input type="submit" value="Buscar" class="btn-success" />*@
+<input type="text" name="Título" id="txtTitulo" placeholder="Buscar"/>
+    <input type="submit" value="Buscar" class="btn-success" />
 }
 
+@
 
 
-
+9u-h
 @{
     ViewBag.Title = "Home Page";
 }
 @{ List<Pelicula> datos = new List<Pelicula>();}
+<div id="DataSearch">
+    @foreach (var imagenPelicula in Model)
+    {
+        if (imagenPelicula.RutaDeImagen != null)
+        {
+            <div>
+                <dl>
+                    @*<dl class="dl-horizontal">*@
+
+
+                    <dd id="DataSearching">
+
+
+                        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
+
+                    </dd>
+
+
+                </dl>
+            </div>
 
 
 
+
+
+        }
+    }
+</div>
+<br />
+<br />
+
+<div id="divResultado"></div>
 
 
  @section scripts
@@ -26,6 +57,76 @@
      <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
      <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
      <script src="~/Scripts/jquery-ui.js"></script>
+     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+     <script>
+         @*$(function () {
+             $("#txtTitulo").keyup(function(){
+                 var url = "@Url.Action("Index", "Home")";
+                 var term = $("#txtTitulo").val();
+                 var data = { term: term };
+
+                 $.post(url, data);
+                 //var x = document.getElementById("txtTitulo");
+                 //x.value = x.value.toUpperCase();
+
+             });
+                 //(onkeyup, '#txtTitulo', function () {
+
+                 //    .done(function (data) {
+                 //    $("#divResultado").html(data);
+                 //}).fail(manejarError);
+             });
+
+
+         //});
+
+         function manejarError(err){
+             console.log(err.responseText);
+         }
+
+         function Mayusculas (){
+             var x = document.getElementById("txtTitulo");
+             x.value = x.value.toUpperCase();
+         }*@
+         $(document).ready(function () {
+             $("#txtTitulo").keyup(function () {
+                 var ValorBusqueda = $("#txtTitulo").val();
+                 var SetData = $("#DataSearching");
+                 SetData.html("");
+                 $.ajax({
+                     type: "post",
+                     url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                     contentType: "html",
+                     success: function (result) {
+                         if (result.length == 0) {
+                             SetData.append('<span>No hay ninguna coincidencia.</span>');
+                         }else{
+                             $.each(result,function(index,value){
+                                 var Data = "<a href="+"@Url.Action("Ver","Home","new {Id ="+ value.Id "})"><img src="@Url.Content(value.RutaDeImagen)" width="250" height="250" /></a>
+
+                             })
+                             }
+
+                             <dl>
+
+                    @*<dl class="dl-horizontal">*@
+
+
+                    <dd id="DataSearching">
+
+
+
+
+                    </dd>
+
+
+                </dl>
+                         }
+                     }
+                 })
+             });
+         })
+     </script>
 @*<script>
         $(function () {
             $("#txtTitulo").({
@@ -37,7 +138,7 @@
         });
 
 </script>*@
-     <script>
+     @*<script>
         function obtener_registros(alumnos){
          $.ajax({
              url : @Url.Action("BuscarPeliculas", "Home"),
@@ -66,34 +167,8 @@
          });
          
          
-     </script>
+     </script>*@
 
      }          
 
 
-@foreach (var imagenPelicula in datos)
-{
-    if (imagenPelicula.RutaDeImagen != null)
-    {
-        <div>
-            <dl>
-                @*<dl class="dl-horizontal">*@
-
-
-                <dd>
-
-
-                    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
-
-                </dd>
-
-
-            </dl>
-        </div>
-
-
-
-
-
-    }
-}

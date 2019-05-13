@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Pruebas";
+}
+
+<h2>Pruebas</h2>
+
+
+<input type="text" id="cap" size="30"/>
+@*<input type="button" value="Buscar" onclick="up()" />*@
+
+<br />
+<br />
+<span id="spanResultado"></span>
+
+@section scripts{
+<script>
+    
+    $(function () {
+        $("#cap").keyup(function () {
+            var url = "@Url.Action("Index", "Home")";
+            var valorBusqueda = document.getElementById("cap");
+            var data = {valorBusqueda:valorBusqueda};
+            $.post(url,data);//.done(function(data){
+            //    $("#spanResultado").html(data);
+
+        });
+            
+    });
+    function Buscar() {
+        var url = "@Url.Action("BuscarPeliculas", "Home")";
+        var valorBusqueda = document.getElementById("cap");
+        var data = {valorBusqueda:valorBusqueda};
+        $.post(url,data).done(function(data){
+            $("#spanResultado").html(data);
+        });
+    }
+function up()
+{
+var x = document.getElementById("cap");
+x.value = x.value.toUpperCase();
+
+}
+</script>
+}
