@@ -40,13 +40,23 @@ namespace PeliculasEdwin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
-        { 
-        //public ActionResult Index(string term)
-        //{
-            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(pelicula.Título)).ToList();
+        //public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
+        //{ 
+        public ActionResult Index(string ValorBusqueda)
+        {
+            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda)).ToList();
             //db.Dispose();
             return View(modelo);
+
+        }
+        public JsonResult BuscandoPeliculas(string ValorBusqueda)
+        {
+            try { 
+            var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda==null).ToList();
+                return Json(modelo, JsonRequestBehavior.AllowGet);
+                //db.Dispose();
+                //return View(modelo);
+            }
 
         }
         public ActionResult Pruebas()
