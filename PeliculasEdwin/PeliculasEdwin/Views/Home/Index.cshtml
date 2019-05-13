@@ -10,10 +10,10 @@
     <input type="submit" value="Buscar" class="btn-success" />
 }
 
-@
 
 
-9u-h
+
+
 @{
     ViewBag.Title = "Home Page";
 }
@@ -101,31 +101,27 @@
                          if (result.length == 0) {
                              SetData.append('<span>No hay ninguna coincidencia.</span>');
                          }else{
-                             $.each(result,function(index,value){
-                                 var Data = "<a href="+"@Url.Action("Ver","Home","new {Id ="+ value.Id "})"><img src="@Url.Content(value.RutaDeImagen)" width="250" height="250" /></a>
-
-                             })
-                             }
-
-                             <dl>
-
-                    @*<dl class="dl-horizontal">*@
+                             $.each(result,function(indice,valor){
+                             //$.each(result,function(index,value){
 
 
-                    <dd id="DataSearching">
+                                 @*var Data =   <a href="@Url.Action("Ver","Home",new {Id: value.Id })"></a>"*@
+                                 @*<a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })">*@
+                                 var Data = "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")"+"><img src="+"@@Url.Content("+valor.RutaDeImagen+")"+""+"width="+"250"+""+"height="+"250"+"" +"</a>"
+                                 @*<img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" />*@
 
+                                 SetData.append(Data);
 
-
-
-                    </dd>
-
-
-                </dl>
+                             });
                          }
+
+
+
                      }
-                 })
-             });
-         })
+                 });
+                 });
+         });
+
      </script>
 @*<script>
         $(function () {
