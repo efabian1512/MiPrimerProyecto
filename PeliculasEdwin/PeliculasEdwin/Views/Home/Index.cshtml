@@ -2,12 +2,13 @@
 
 @*@using (Html.BeginForm()) {*@ 
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+<h2>Peliculas</h2><br />
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken();
    
-<input type="text" name="Título" id="txtTitulo" placeholder="Buscar"/>
-    <input type="submit" value="Buscar" class="btn-success" />
+<input type="text" name="Título" id="txtTitulo" placeholder="Buscar" size="30"/>
+    @*<input type="submit" value="Buscar" class="btn-success" />*@
 }
 
 
@@ -27,8 +28,8 @@
                 <dl>
                     @*<dl class="dl-horizontal">*@
 
-
-                    <dd id="DataSearching">
+                    <dd>
+                    @*<dd id="DataSearching">*@
 
 
                         <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
@@ -91,7 +92,8 @@
          $(document).ready(function () {
              $("#txtTitulo").keyup(function () {
                  var ValorBusqueda = $("#txtTitulo").val();
-                 var SetData = $("#DataSearching");
+                 //var SetData = $("#DataSearching");
+                 var SetData = $("#DataSearch");
                  SetData.html("");
                  $.ajax({
                      type: "post",
@@ -107,7 +109,8 @@
 
                                  @*var Data =   <a href="@Url.Action("Ver","Home",new {Id: value.Id })"></a>"*@
                                  @*<a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })">*@
-                                 var Data = "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")"+"><img src="+"@@Url.Content("+valor.RutaDeImagen+")"+""+"width="+"250"+""+"height="+"250"+"" +"</a>"
+                                 //var Data = "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")" + "><img src=" + "@@Url.Content(" + valor.RutaDeImagen + ")" + "" + "width=" + "250" + "" + "height=" + "250" + "" + "/>" + "</a>"
+                                 var Data = "<div> <dl> <dd>" + "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")" + "><img src=" + "@@Url.Content(" + valor.RutaDeImagen + ")" + "" + "width=" + "250" + "" + "height=" + "250" + "" + "/>" + "</a>" + " </dd> </dl></div>";
                                  @*<img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" />*@
 
                                  SetData.append(Data);
