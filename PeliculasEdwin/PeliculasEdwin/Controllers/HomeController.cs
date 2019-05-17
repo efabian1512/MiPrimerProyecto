@@ -15,6 +15,14 @@ namespace PeliculasEdwin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            //var estudiantes = db.EstudiantePrueba.ToList();
+            //var estudiante1 = new EstudiantePrueba() { Nombre = "Edwin Fabian", semestre = 1 };
+            //var estudiante2 = new EstudiantePrueba() { Nombre = "Ramon Fabian", semestre = 2 };
+            //var estudiante3 = new EstudiantePrueba() { Nombre = "Frankely Fabian", semestre = 3 };
+            //db.EstudiantePrueba.Add(estudiante1);
+            //db.EstudiantePrueba.Add(estudiante2);
+            //db.EstudiantePrueba.Add(estudiante3);
+            //db.SaveChanges();
 
             //var pelicula = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
             ////var pelicula1 = db.PeliculasEdwin.Where(x => x.Id == 2).FirstOrDefault();
@@ -37,6 +45,18 @@ namespace PeliculasEdwin.Controllers
             //var prueba1 = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
+        }
+        public ActionResult Estudiantes()
+        {
+            var modelo = db.PeliculasEdwin.ToList();
+            return View(modelo);
+        }
+        public JsonResult BuscandoEstudiantes(string ValorBusqueda)
+        {
+            var estudiantes = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
+
+            return Json(estudiantes, JsonRequestBehavior.AllowGet);
+
         }
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {

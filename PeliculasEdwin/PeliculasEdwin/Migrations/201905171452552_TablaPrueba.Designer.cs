@@ -7,13 +7,13 @@ namespace PeliculasEdwin.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ProcedimientosAlmacenados : IMigrationMetadata
+    public sealed partial class TablaPrueba : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProcedimientosAlmacenados));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TablaPrueba));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905121516109_ProcedimientosAlmacenados"; }
+            get { return "201905171452552_TablaPrueba"; }
         }
         
         string IMigrationMetadata.Source

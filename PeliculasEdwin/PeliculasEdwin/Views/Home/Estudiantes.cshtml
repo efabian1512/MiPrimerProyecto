@@ -1,0 +1,108 @@
+﻿
+@*@model List<PeliculasEdwin.Models.EstudiantePrueba>*@
+    @model List<Pelicula>
+
+@{
+    ViewBag.Title = "Estudiantes";
+}
+@{ var DataId = 0;
+    string Ruta="prueba";
+
+        }
+
+<h2>Estudiantes</h2>
+<br />
+<br />
+<input type="text" id="txtBuscar" size="30" />
+<br />
+<br />
+@*<table class="table table-striped">*@
+    @*<thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Semestre</th>
+        </tr>
+    </thead>
+    <tbody id="DataSearching">
+       @foreach (var estudiante in Model)
+       {
+         <tr>
+             <td>@estudiante.Id</td>
+             <td>@estudiante.Nombre</td>
+             <td>@estudiante.semestre</td>
+         </tr>
+         
+
+       }
+    </tbody>
+   
+</table>*@
+<div id="DataSearching">
+    @foreach(var imagenPelicula in Model) { 
+    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
+       
+    }
+</div>
+
+@section scripts
+     {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
+         
+         $(document).ready(function () {
+             $("#txtBuscar").keyup(function () {
+                 var ValorBusqueda = $("#txtBuscar").val();
+                 
+                 var SetData = $("#DataSearching");
+                 SetData.html("");
+                 $.ajax({
+                     type: "post",
+                     url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                     contentType: "html",
+                     success: function (result) {
+                         if (result.length == 0) {
+                             SetData.append('<span>No hay ninguna coincidencia.</span>');
+                         }else{
+                             $.each(result,function(indice,valor){
+                                 //var Data = "<tr>" +
+                                 //              "<td>"+valor.Id+"</td>"+
+                                 //               "<td>"+valor.Nombre+"</td>"+
+                                 //                "<td>"+valor.semestre+"</td>"+
+                                 // "</tr>";
+                                 
+                                 @DataId= valor.Id;
+                                 @Ruta = valor.RutaDeImagen;
+                                
+                              
+                                 //var Data = "<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
+                                var Data= "<a href=\"" + @Url.Action("Ver","Home",new { Id=DataId })+"\"><img src=\"" + @Url.Content(Ruta)+"\""+" width=\"250\" height=\"250\"/></a>";
+                                
+                                
+                                 
+
+
+
+                                
+
+                                 SetData.append(Data);
+
+                             });
+                         }
+
+
+
+                     }
+                 });
+                 });
+         });
+
+    </script>
+    }
+
+
+
+
