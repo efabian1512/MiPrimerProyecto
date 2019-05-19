@@ -40,7 +40,7 @@
 </table>*@
 <div id="DataSearching">
     @foreach(var imagenPelicula in Model) { 
-    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
+    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250"/></a>
        
     }
 </div>
@@ -73,14 +73,16 @@
                                  //               "<td>"+valor.Nombre+"</td>"+
                                  //                "<td>"+valor.semestre+"</td>"+
                                  // "</tr>";
+                                 var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                 url = url.replace("parametro-id",encodeURIComponent(valor.Id));
+                                 var content = "@Url.Content("parametro-contenido")";
+                                 content = content.replace("parametro-contenido", encodeURIComponent(valor.RutaDeImagen));
                                  
-                                 @DataId= valor.Id;
-                                 @Ruta = valor.RutaDeImagen;
                                 
-                              
-                                 //var Data = "<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
-                                var Data= "<a href=\"" + @Url.Action("Ver","Home",new { Id=DataId })+"\"><img src=\"" + @Url.Content(Ruta)+"\""+" width=\"250\" height=\"250\"/></a>";
-                                
+                                 //var Data ="<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
+                                 //var Data = "<a href=\"" + url + "\"><img src=\"" + content + "\"" + " width=\"250\" height=\"250\"/></a>";
+                                 var Data = "<a href=" + url + "><img src=" + content + " width=\"250\" height=\"250\"/></a>";
+                               
                                 
                                  
 

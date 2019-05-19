@@ -58,10 +58,13 @@ namespace PeliculasEdwin.Controllers
             return Json(estudiantes, JsonRequestBehavior.AllowGet);
 
         }
+        
+        //public ActionResult BuscandoPeliculas(string ValorBusqueda)
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
             return Json(modelo, JsonRequestBehavior.AllowGet);
+            
         }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
