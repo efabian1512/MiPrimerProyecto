@@ -60,6 +60,7 @@ namespace PeliculasEdwin.Controllers
         }
         
         //public ActionResult BuscandoPeliculas(string ValorBusqueda)
+        
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();

@@ -10,6 +10,8 @@
 
         }
 
+
+
 <h2>Estudiantes</h2>
 <br />
 <br />
@@ -41,7 +43,7 @@
 </table>*@
 <div id="DataSearching">
     @foreach(var imagenPelicula in Model) { 
-    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })" id="SetImage"><img src="@Url.Content(imagenPelicula.RutaDeImagen)"  width="250" height="250"/></a>
+    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })" ><img src="@Url.Content(imagenPelicula.RutaDeImagen)"  width="250" height="250"/></a>
        
     }
 </div>
@@ -75,27 +77,29 @@
                                     //               "<td>"+valor.Nombre+"</td>"+
                                     //                "<td>"+valor.semestre+"</td>"+
                                     // "</tr>";
+                                    var tamanio = valor.RutaDeImagen.length;
                                     var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
                                     url = url.replace("parametro-id", valor.Id);
                                     var content = ("@Url.Content("parametro-contenido")").toString();
                                     content = content.replace("parametro-contenido", valor.RutaDeImagen);
+                                    content = content.substring(1, tamanio);
 
 
                                     //var Data ="<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
                                     //var Data = "<a href=\"" + url + "\"><img src=\"" + content + "\"" + " width=\"250\" height=\"250\"/></a>";
-                                    var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\"" + "/></a>";
-                                    //var Data = "<a href=\"" + url + "\"" + ">" + "</a>";
+                                    var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" alt=\""+valor.Título+"\""+"/>"+"</a>";
+                                   // var Data = "<a href=\"" + url + "\" id=\"SetImage\"" + ">" + "</a>";
 
 
-                                    //var Image = "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\"" + "/>";
+                                   //var Image = "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\"" + "/>";
 
 
 
 
                                     
-                                    SetData.html(Data);
+                                    SetData.append(Data);
                                   
-                                    //SetImage.html(Image);
+                                    //SetImage.append(Image);
 
                                     
 
