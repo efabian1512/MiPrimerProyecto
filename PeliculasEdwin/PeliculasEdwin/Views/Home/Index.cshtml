@@ -1,173 +1,84 @@
 ﻿@model List<Pelicula>
 
-@*@using (Html.BeginForm()) {*@ 
-
-<h2>Peliculas</h2><br />
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken();
-   
-<input type="text" name="Título" id="txtTitulo" placeholder="Buscar" size="30"/>
-    @*<input type="submit" value="Buscar" class="btn-success" />*@
-}
-
-
-
-
-
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Peliculas";
 }
-@{ List<Pelicula> datos = new List<Pelicula>();}
-<div id="DataSearch">
+
+<h2>Peliculas</h2>
+<br />
+<br />
+<input type="text" id="txtBuscar" size="30" placeholder="Buscar"/>
+<br />
+<br />
+
+<div id="DataSearching">
     @foreach (var imagenPelicula in Model)
     {
-        if (imagenPelicula.RutaDeImagen != null)
-        {
-            <div>
-                <dl>
-                    @*<dl class="dl-horizontal">*@
+        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
 
-                    <dd>
-                    @*<dd id="DataSearching">*@
-
-
-                        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
-
-                    </dd>
-
-
-                </dl>
-            </div>
-
-
-
-
-
-        }
     }
 </div>
-<br />
-<br />
 
-<div id="divResultado"></div>
-
-
- @section scripts
+@section scripts
      {
-     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-     <script src="~/Scripts/jquery-ui.js"></script>
-     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-     <script>
-         @*$(function () {
-             $("#txtTitulo").keyup(function(){
-                 var url = "@Url.Action("Index", "Home")";
-                 var term = $("#txtTitulo").val();
-                 var data = { term: term };
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
 
-                 $.post(url, data);
-                 //var x = document.getElementById("txtTitulo");
-                 //x.value = x.value.toUpperCase();
+            $(document).ready(function () {
+                $("#txtBuscar").keyup(function () {
+                    var ValorBusqueda = $("#txtBuscar").val();
 
-             });
-                 //(onkeyup, '#txtTitulo', function () {
-
-                 //    .done(function (data) {
-                 //    $("#divResultado").html(data);
-                 //}).fail(manejarError);
-             });
-
-
-         //});
-
-         function manejarError(err){
-             console.log(err.responseText);
-         }
-
-         function Mayusculas (){
-             var x = document.getElementById("txtTitulo");
-             x.value = x.value.toUpperCase();
-         }*@
-         $(document).ready(function () {
-             $("#txtTitulo").keyup(function () {
-                 var ValorBusqueda = $("#txtTitulo").val();
-                 //var SetData = $("#DataSearching");
-                 var SetData = $("#DataSearch");
-                 SetData.html("");
-                 $.ajax({
-                     type: "post",
-                     url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
-                     contentType: "html",
-                     success: function (result) {
-                         if (result.length == 0) {
-                             SetData.append('<span>No hay ninguna coincidencia.</span>');
-                         }else{
-                             $.each(result,function(indice,valor){
-                             //$.each(result,function(index,value){
+                    var SetData = $("#DataSearching");
+                    var SetImage = $("#SetImage");
+                    SetData.html("");
+                    $.ajax({
+                        type: "post",
+                        url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                        contentType: "html",
+                        success: function (result) {
+                            if (result.length == 0) {
+                                SetData.append('<span>No hay ninguna coincidencia.</span>');
+                            } else {
+                                $.each(result, function (indice, valor) {
+                                  
+                                    var tamanio = valor.RutaDeImagen.length;
+                                    var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                    url = url.replace("parametro-id", valor.Id);
+                                    var content = ("@Url.Content("parametro-contenido")").toString();
+                                    content = content.replace("parametro-contenido", valor.RutaDeImagen);
+                                    content = content.substring(1, tamanio);
 
 
-                                 @*var Data =   <a href="@Url.Action("Ver","Home",new {Id: value.Id })"></a>"*@
-                                 @*<a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })">*@
-                                 //var Data = "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")" + "><img src=" + "@@Url.Content(" + valor.RutaDeImagen + ")" + "" + "width=" + "250" + "" + "height=" + "250" + "" + "/>" + "</a>"
-                                 var Data = "<div> <dl> <dd>" + "<a href=" + "@@Url.Action(" + "Ver" + "," + "Home" + "," + new { Id: valor.Id } + ")" + "><img src=" + "@@Url.Content(" + valor.RutaDeImagen + ")" + "" + "width=" + "250" + "" + "height=" + "250" + "" + "/>" + "</a>" + " </dd> </dl></div>";
-                                 @*<img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" />*@
-
-                                 SetData.append(Data);
-
-                             });
-                         }
+                                    
+                                    var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" alt=\""+valor.Título+"\""+"/>"+"</a>";
+                                   
 
 
 
-                     }
-                 });
-                 });
-         });
 
-     </script>
-@*<script>
-        $(function () {
-            $("#txtTitulo").({
-                source: "/Home/Index"
+                                    SetData.append(Data);
+
+                                    
+
+
+
+                                });
+                            }
+
+
+
+                        }
+                    });
+                });
             });
 
 
+    </script>
+}
 
-        });
 
-</script>*@
-     @*<script>
-        function obtener_registros(alumnos){
-         $.ajax({
-             url : @Url.Action("BuscarPeliculas", "Home"),
-             type :'POST',
-             dataType : 'html',
-             data : {alumnos : alumnos}
-             
-         }).done(function(resultado){
-
-            
-             @datos = resultado;
-
-         })
-        }
-         $(document).on(onkeyup, '#txtTitulo',function()
-         
-         {
-             var valorBusqueda = $(this).val();
-             if (valorBusqueda != "") {
-                 obtener_registros(valorBusqueda);
-
-             }else{
-                 obtener_registros();
-             }
-
-         });
-         
-         
-     </script>*@
-
-     }          
 
 

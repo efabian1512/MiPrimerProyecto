@@ -15,58 +15,31 @@ namespace PeliculasEdwin.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //var estudiantes = db.EstudiantePrueba.ToList();
-            //var estudiante1 = new EstudiantePrueba() { Nombre = "Edwin Fabian", semestre = 1 };
-            //var estudiante2 = new EstudiantePrueba() { Nombre = "Ramon Fabian", semestre = 2 };
-            //var estudiante3 = new EstudiantePrueba() { Nombre = "Frankely Fabian", semestre = 3 };
-            //db.EstudiantePrueba.Add(estudiante1);
-            //db.EstudiantePrueba.Add(estudiante2);
-            //db.EstudiantePrueba.Add(estudiante3);
-            //db.SaveChanges();
-
-            //var pelicula = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
-            ////var pelicula1 = db.PeliculasEdwin.Where(x => x.Id == 2).FirstOrDefault();
-            //pelicula.RutaDeImagen = "~/Images/268x0w192139811.png";
-            //pelicula1.RutaDeImagen = "~/Images/A1t8xCe9jwL._SY679_190159757.jpg";
-            //db.SaveChanges();
-            //Pelicula prueba = new Pelicula()
-            //{
-            //    Título = "Avengers",
-            //    Duración = "3 hrs",
-            //    Año = "2018",
-            //    Género = "Accion",
-            //    Sinopsis = "Pelicula se super herores.",
-            //    EnCarTelera = false,
-            //    País = "USA"
-            //};
-
-            //db.PeliculasEdwin.Add(prueba);
-            //db.SaveChanges();
-            //var prueba1 = db.PeliculasEdwin.Where(x => x.Id == 1).FirstOrDefault();
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
         }
-        public ActionResult Estudiantes()
-        {
-            var modelo = db.PeliculasEdwin.ToList();
-            return View(modelo);
-        }
-        public JsonResult BuscandoEstudiantes(string ValorBusqueda)
-        {
-            var estudiantes = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
-
-            return Json(estudiantes, JsonRequestBehavior.AllowGet);
-
-        }
-        
-        //public ActionResult BuscandoPeliculas(string ValorBusqueda)
-        
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
             return Json(modelo, JsonRequestBehavior.AllowGet);
-            
+
         }
+        //public ActionResult Estudiantes()
+        //{
+        //    var modelo = db.PeliculasEdwin.ToList();
+        //    return View(modelo);
+        //}
+        //public JsonResult BuscandoEstudiantes(string ValorBusqueda)
+        //{
+        //    var estudiantes = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
+
+        //    return Json(estudiantes, JsonRequestBehavior.AllowGet);
+
+        //}
+
+        //public ActionResult BuscandoPeliculas(string ValorBusqueda)
+
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
