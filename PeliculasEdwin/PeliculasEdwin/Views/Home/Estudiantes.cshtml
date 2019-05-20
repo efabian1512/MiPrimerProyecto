@@ -16,6 +16,7 @@
 <input type="text" id="txtBuscar" size="30" />
 <br />
 <br />
+
 @*<table class="table table-striped">*@
     @*<thead>
         <tr>
@@ -40,7 +41,7 @@
 </table>*@
 <div id="DataSearching">
     @foreach(var imagenPelicula in Model) { 
-    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250"/></a>
+    <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })" id="SetImage"><img src="@Url.Content(imagenPelicula.RutaDeImagen)"  width="250" height="250"/></a>
        
     }
 </div>
@@ -52,55 +53,62 @@
     <script src="~/Scripts/jquery-ui.js"></script>
     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
     <script>
-         
-         $(document).ready(function () {
-             $("#txtBuscar").keyup(function () {
-                 var ValorBusqueda = $("#txtBuscar").val();
-                 
-                 var SetData = $("#DataSearching");
-                 SetData.html("");
-                 $.ajax({
-                     type: "post",
-                     url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
-                     contentType: "html",
-                     success: function (result) {
-                         if (result.length == 0) {
-                             SetData.append('<span>No hay ninguna coincidencia.</span>');
-                         }else{
-                             $.each(result,function(indice,valor){
-                                 //var Data = "<tr>" +
-                                 //              "<td>"+valor.Id+"</td>"+
-                                 //               "<td>"+valor.Nombre+"</td>"+
-                                 //                "<td>"+valor.semestre+"</td>"+
-                                 // "</tr>";
-                                 var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
-                                 url = url.replace("parametro-id",encodeURIComponent(valor.Id));
-                                 var content = "@Url.Content("parametro-contenido")";
-                                 content = content.replace("parametro-contenido", encodeURIComponent(valor.RutaDeImagen));
-                                 
-                                
-                                 //var Data ="<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
-                                 //var Data = "<a href=\"" + url + "\"><img src=\"" + content + "\"" + " width=\"250\" height=\"250\"/></a>";
-                                 var Data = "<a href=" + url + "><img src=" + content + " width=\"250\" height=\"250\"/></a>";
-                               
-                                
-                                 
+
+            $(document).ready(function () {
+                $("#txtBuscar").keyup(function () {
+                    var ValorBusqueda = $("#txtBuscar").val();
+
+                    var SetData = $("#DataSearching");
+                    var SetImage = $("#SetImage");
+                    SetData.html("");
+                    $.ajax({
+                        type: "post",
+                        url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                        contentType: "html",
+                        success: function (result) {
+                            if (result.length == 0) {
+                                SetData.append('<span>No hay ninguna coincidencia.</span>');
+                            } else {
+                                $.each(result, function (indice, valor) {
+                                    //var Data = "<tr>" +
+                                    //              "<td>"+valor.Id+"</td>"+
+                                    //               "<td>"+valor.Nombre+"</td>"+
+                                    //                "<td>"+valor.semestre+"</td>"+
+                                    // "</tr>";
+                                    var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                    url = url.replace("parametro-id", valor.Id);
+                                    var content = ("@Url.Content("parametro-contenido")").toString();
+                                    content = content.replace("parametro-contenido", valor.RutaDeImagen);
+
+
+                                    //var Data ="<a href=\"" + "@@Url.Action(" + "\"Ver\"" + "\"Home\"" + new { Id: valor.Id } + ")\"><img src=\"" + "@@Url.Content(" + valor.RutaDeImagen + ")\" width=\"250\" height=\"250\"/></a>";
+                                    //var Data = "<a href=\"" + url + "\"><img src=\"" + content + "\"" + " width=\"250\" height=\"250\"/></a>";
+                                    var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\"" + "/></a>";
+                                    //var Data = "<a href=\"" + url + "\"" + ">" + "</a>";
+
+
+                                    //var Image = "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\"" + "/>";
 
 
 
-                                
 
-                                 SetData.append(Data);
+                                    
+                                    SetData.html(Data);
+                                  
+                                    //SetImage.html(Image);
 
-                             });
-                         }
+                                    
+
+                                });
+                            }
 
 
 
-                     }
-                 });
-                 });
-         });
+                        }
+                    });
+                });
+            });
+
 
     </script>
     }
