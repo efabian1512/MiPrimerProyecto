@@ -11,57 +11,25 @@ namespace PeliculasEdwin.Controllers
 {
     public class HomeController : Controller
     {
+        //Declaración objeto dbcontext
         ApplicationDbContext db = new ApplicationDbContext();
+
+        //Método get del index donde se cargan todas las películas
         [HttpGet]
         public ActionResult Index()
         {
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
         }
+        //Método para filtrar películas por título
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
             return Json(modelo, JsonRequestBehavior.AllowGet);
 
         }
-        //public ActionResult Estudiantes()
-        //{
-        //    var modelo = db.PeliculasEdwin.ToList();
-        //    return View(modelo);
-        //}
-        //public JsonResult BuscandoEstudiantes(string ValorBusqueda)
-        //{
-        //    var estudiantes = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
-
-        //    return Json(estudiantes, JsonRequestBehavior.AllowGet);
-
-        //}
-
-        //public ActionResult BuscandoPeliculas(string ValorBusqueda)
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index([Bind(Include = "Título")]Pelicula pelicula)
-        //{ 
-        ////public ActionResult Index(string term)
-        ////{
-        //    var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(pelicula.Título)).ToList();
-        //    //db.Dispose();
-        //    return View(modelo);
-
-        //}
-        public ActionResult Pruebas()
-        {
-            return View();
-        }
-       // [HttpPost]
-       //// [ValidateAntiForgeryToken]
-       // public JsonResult BuscarPeliculas(string valorBusqueda)
-       // {
-       //     var pelicula =db.PeliculasEdwin.Where(x => x.Título.Contains(valorBusqueda)).FirstOrDefault();
-       //     return Json(pelicula.Título);
-       // }
+       
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -76,11 +44,13 @@ namespace PeliculasEdwin.Controllers
 
             return View();
         }
+        //Método get de la vista donde se registran las películas
         [HttpGet]
         public ActionResult RegistrarPelicula()
         {
             return View();
         }
+        //Método post de la vista donde se registran las películas
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RegistrarPelicula([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,ArchivoDeVideo")]Pelicula pelicula)
@@ -110,6 +80,7 @@ namespace PeliculasEdwin.Controllers
             ModelState.Clear();
             return View();
         }
+        //Método get de la vista que presenta los detalles de las películas y permite reproducirlas
         [HttpGet]
         public ActionResult Ver([Bind(Include = "Id")]Pelicula peliculaDetalles)
         {
@@ -117,9 +88,11 @@ namespace PeliculasEdwin.Controllers
             var ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
             return View(ModeloPelicula);
         }
+        //Método get de la vsta para editar películas
         [HttpGet]
         public ActionResult Editar(int? id)
         {
+            // Si el id es nulo redirige a vista index (inicio)
             if (id.Equals(null))
             {
                 return RedirectToAction("Index");
@@ -129,10 +102,11 @@ namespace PeliculasEdwin.Controllers
             return View(pelicula);
         }
 
-
+        //Método post de la vista para editar películas
         [HttpPost]
-        public ActionResult Editar([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,RutaDeImagen")]Pelicula pelicula)
+        public ActionResult Editar([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,RutaDeImagen,ArchivoDeVideo,RutaDeVideo")]Pelicula pelicula)
         {
+            //Si se cambió el archivo de imagen se procede a guardar datos nueva imagen
             if (pelicula.ArchivoDeImagen != null)
             {
 
@@ -148,6 +122,23 @@ namespace PeliculasEdwin.Controllers
                 return RedirectToAction("Index");
 
             }
+            //Si se cambio el video se guardan todos los datos del nuevo video
+            if (pelicula.ArchivoDeVideo != null)
+            {
+
+                string fileName = Path.GetFileNameWithoutExtension(pelicula.ArchivoDeVideo.FileName);
+                string extension = Path.GetExtension(pelicula.ArchivoDeVideo.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                pelicula.RutaDeVideo = "~/Video/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Video/"), fileName);
+                pelicula.ArchivoDeVideo.SaveAs(fileName);
+
+                db.Entry(pelicula).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            //Si no se cambia la imagen, se guardan los cambios realizados y se redirige  a index(inicio)
             db.Entry(pelicula).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -165,6 +156,7 @@ namespace PeliculasEdwin.Controllers
         //    return View("Ver", PeliculaInfo);
 
         //}
+        //Comentarios (en construcción)
         [HttpPost]
         public JsonResult Comentarios([Bind(Include = "Contenido")] Comentario comentario, int idPelicula)
         {
@@ -180,6 +172,7 @@ namespace PeliculasEdwin.Controllers
             return Json(comentario.Contenido);
 
         }
+        // Método get para vista de eliminar peliculas
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
@@ -188,7 +181,7 @@ namespace PeliculasEdwin.Controllers
             return View(pelicula);
         }
 
-
+        //Método post para eliminar
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Eliminar(int? id)
@@ -199,14 +192,6 @@ namespace PeliculasEdwin.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public ActionResult BuscarPelicula(string valorBusqueda)
-        //{
-        //    var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(valorBusqueda)).ToList();
-        //    //db.Dispose();
-        //    return View(modelo);
-
-
-        //}
+        
     }
 }

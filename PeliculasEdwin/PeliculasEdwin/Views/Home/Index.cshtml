@@ -7,14 +7,15 @@
 <h2>Peliculas</h2>
 <br />
 <br />
+<!--Cuadro de texto para realizar busqueda-->
 <input type="text" id="txtBuscar" size="30" placeholder="Buscar"/>
 <br />
 <br />
-
+<!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
 <div id="DataSearching">
     @foreach (var imagenPelicula in Model)
     {
-        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a>
+        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a> 
 
     }
 </div>
@@ -26,14 +27,15 @@
     <script src="~/Scripts/jquery-ui.js"></script>
     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
     <script>
-
+            //Programacion del evento keyup del cuadro de texto txtBuscar
             $(document).ready(function () {
                 $("#txtBuscar").keyup(function () {
                     var ValorBusqueda = $("#txtBuscar").val();
 
                     var SetData = $("#DataSearching");
-                    var SetImage = $("#SetImage");
+                   
                     SetData.html("");
+                    //Uso de Ajax para llamar al metodo de filtrado de peliculas
                     $.ajax({
                         type: "post",
                         url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
@@ -50,15 +52,7 @@
                                     var content = ("@Url.Content("parametro-contenido")").toString();
                                     content = content.replace("parametro-contenido", valor.RutaDeImagen);
                                     content = content.substring(1, tamanio);
-
-
-                                    
                                     var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" alt=\""+valor.Título+"\""+"/>"+"</a>";
-                                   
-
-
-
-
                                     SetData.append(Data);
 
                                     

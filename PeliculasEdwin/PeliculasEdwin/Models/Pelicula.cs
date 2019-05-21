@@ -7,11 +7,12 @@ using System.Web;
 
 namespace PeliculasEdwin.Models
 {
+    //Modelo pelicula
     public class Pelicula
     {
 
 
-
+        //DEclaracion de propiedades modelo Pelicula
         public int Id { get; set; }
         [StringLength(100, ErrorMessage = "Ha sobrepasado el maximo de caracteres permitidos.")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
