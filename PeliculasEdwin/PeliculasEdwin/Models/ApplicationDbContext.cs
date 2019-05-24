@@ -17,7 +17,8 @@ namespace PeliculasEdwin.Models
         //DbSets o tablas
         public DbSet<Pelicula> PeliculasEdwin { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
-        
+        public DbSet<Usuario> Usuarios { get; set; }
+                
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

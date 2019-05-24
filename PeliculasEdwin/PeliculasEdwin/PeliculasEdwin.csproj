@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,10 +189,15 @@
     <Compile Include="Migrations\201905211954332_EliminacionTablaEstudiantes.Designer.cs">
       <DependentUpon>201905211954332_EliminacionTablaEstudiantes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905240110101_TablaUsuarios.cs" />
+    <Compile Include="Migrations\201905240110101_TablaUsuarios.Designer.cs">
+      <DependentUpon>201905240110101_TablaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\Pelicula.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +325,7 @@
     <Content Include="Views\Home\Ver.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
     <Content Include="Views\Home\Eliminar.cshtml" />
+    <Content Include="Views\Account\Registrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211954332_EliminacionTablaEstudiantes.resx">
       <DependentUpon>201905211954332_EliminacionTablaEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905240110101_TablaUsuarios.resx">
+      <DependentUpon>201905240110101_TablaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
