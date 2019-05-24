@@ -25,9 +25,10 @@ namespace PeliculasEdwin.Controllers
             if (ModelState.IsValid) {
             db.Usuarios.Add(usuario);
             db.SaveChanges();
-
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index","Home");
+            return View();
+            
             
 
         }

@@ -26,7 +26,7 @@ namespace PeliculasEdwin.Models
         public string CorreoElectronico { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
-        [Compare("CorreoElectronico",ErrorMessage ="Los correos no coinciden.")]
+        [Compare("CorreoElectronico", ErrorMessage ="Los correos no coinciden.")]
         [NotMapped]
         public string ConfirmarCorreo { get; set; }
         [StringLength(30,ErrorMessage ="El valor sobre pasa la cantidad maxima.")]
@@ -36,6 +36,7 @@ namespace PeliculasEdwin.Models
         public string Password { get; set; }
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         [Compare("Password", ErrorMessage = "El password no coincide.")]
+        
         [NotMapped]
         public string ConfirmarPassword { get; set; }
     }

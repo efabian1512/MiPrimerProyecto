@@ -326,6 +326,8 @@
     <Content Include="Views\Home\Editar.cshtml" />
     <Content Include="Views\Home\Eliminar.cshtml" />
     <Content Include="Views\Account\Registrar.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
