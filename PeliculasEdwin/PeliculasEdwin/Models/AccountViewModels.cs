@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PeliculasEdwin.Models
@@ -64,21 +65,48 @@ namespace PeliculasEdwin.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="El campo {0} es requerido.")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [StringLength(50,ErrorMessage ="El {0} debe ser de al menos {2} caracteres de longitud. ",MinimumLength =6)]
+        [Display(Name = "Correo Electrónico")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
+        [Compare("Email", ErrorMessage = "Los correos no coinciden.")]
+        public string ConfirmarCorreo { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(15, ErrorMessage = "Maximo permitido, 15 caracteres.")]
+        [Display(Name="Nombre de usuario")]
+        public string NombreUsuario { get; set; }
+
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El {0} debe ser de al moenos {2} caracteres de longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "El password y el password de connfirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(30, ErrorMessage = "Maximo permitido, 30 caracteres.")]
+        public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
+        public string Apellidos { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Display(Name = "Fecha de nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
+
+        [Display(Name = "Teléfono")]
+        public string Telefono { get; set; }
+
     }
 
     public class ResetPasswordViewModel

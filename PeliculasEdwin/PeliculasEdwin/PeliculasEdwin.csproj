@@ -251,6 +251,14 @@
     <Compile Include="Migrations\201905280405242_MantenimientoDeUsuarios.Designer.cs">
       <DependentUpon>201905280405242_MantenimientoDeUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905281645433_AdicionDeColumnasAspUsers.cs" />
+    <Compile Include="Migrations\201905281645433_AdicionDeColumnasAspUsers.Designer.cs">
+      <DependentUpon>201905281645433_AdicionDeColumnasAspUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281817272_RetiroDeColumnaTelefonoAspNet.cs" />
+    <Compile Include="Migrations\201905281817272_RetiroDeColumnaTelefonoAspNet.Designer.cs">
+      <DependentUpon>201905281817272_RetiroDeColumnaTelefonoAspNet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -453,6 +461,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905280405242_MantenimientoDeUsuarios.resx">
       <DependentUpon>201905280405242_MantenimientoDeUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281645433_AdicionDeColumnasAspUsers.resx">
+      <DependentUpon>201905281645433_AdicionDeColumnasAspUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281817272_RetiroDeColumnaTelefonoAspNet.resx">
+      <DependentUpon>201905281817272_RetiroDeColumnaTelefonoAspNet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

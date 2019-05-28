@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
@@ -13,6 +14,19 @@ namespace PeliculasEdwin.Models
 
     public class ApplicationUser : IdentityUser
     {
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(30, ErrorMessage = "Maximo permitido, 30 caracteres.")]
+        public string Nombre { get; set; }
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
+        public string Apellidos { get; set; }
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Display(Name ="Fecha de nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
+        //[Display(Name ="Teléfono")]
+        //public string Telefono { get; set; }
+        
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

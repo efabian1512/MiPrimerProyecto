@@ -151,7 +151,8 @@ namespace PeliculasEdwin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                var user = new ApplicationUser { UserName = model.NombreUsuario, Email = model.Email,Nombre=model.Nombre,FechaNacimiento=model.FechaNacimiento,Apellidos=model.Apellidos,PhoneNumber=model.Telefono };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
