@@ -16,6 +16,7 @@ namespace PeliculasEdwin.Controllers
 
         //Método get del index donde se cargan todas las películas
         [HttpGet]
+        //[Authorize]
         public ActionResult Index()
         {
             var ModeloPeliculas = db.PeliculasEdwin.ToList();

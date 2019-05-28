@@ -24,20 +24,20 @@ namespace PeliculasEdwin.Models
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         public string CorreoElectronico { get; set; }
+        [NotMapped]
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         [Compare("CorreoElectronico", ErrorMessage ="Los correos no coinciden.")]
-        [NotMapped]
         public string ConfirmarCorreo { get; set; }
         [StringLength(30,ErrorMessage ="El valor sobre pasa la cantidad maxima.")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         public string Password { get; set; }
+        [NotMapped]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         [Compare("Password", ErrorMessage = "El password no coincide.")]
-        
-        [NotMapped]
+        [ScaffoldColumn(true)]
         public string ConfirmarPassword { get; set; }
     }
 }
