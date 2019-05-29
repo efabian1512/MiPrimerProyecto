@@ -50,16 +50,16 @@ namespace PeliculasEdwin.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Correo electrónico o Usuario")]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Recordarme?")]
         public bool RememberMe { get; set; }
     }
 
@@ -72,6 +72,7 @@ namespace PeliculasEdwin.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
+        [EmailAddress]
         [StringLength(50, ErrorMessage = "Maximo permitido, 50 caracteres.")]
         [Compare("Email", ErrorMessage = "Los correos no coinciden.")]
         public string ConfirmarCorreo { get; set; }
