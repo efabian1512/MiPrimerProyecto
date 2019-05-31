@@ -1,0 +1,93 @@
+﻿@*@model List<PeliculasEdwin.Models.ApplicationUser>*@
+@model  AsignarRolViewModel
+@{
+    ViewBag.Title = "Asignar roles";
+}
+
+<h2>AsignarRoles</h2>
+
+@using (Html.BeginForm("AsignarRol","Manage"))
+{
+    @Html.AntiForgeryToken()
+   
+        @Html.Label("Seleccione usuario: ")
+     
+       
+        
+            @Html.DropDownListFor(model=>model.usuario, (List<SelectListItem>)ViewBag.ListaDoDeUsuarios,"Sin selección")
+    
+     
+        <br />
+        <br />
+
+           @Html.Label("Seleccione roles: ")
+            
+                @*@Html.DropDownListFor(model=>model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles,"Sin selección")*@
+   @Html.ListBoxFor(model => model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles, "Sin selección")
+
+    @*<label>Seleccione usuario</label>
+    <select>
+        @foreach(var user in ViewBag.ListaDoDeUsuarios)
+        {
+            <option value="@user.Id" name="usuario">@user.UserName</option>
+
+        }
+
+    </select>
+
+    <br />
+    <br />
+
+    <label>Seleccione roles</label>
+    <select>
+        @foreach (var roles in ViewBag.ListaDoDeRoles)
+        {
+            <option value="@roles.Id" name="roles"  >@roles.Name</option>
+
+        }
+
+    </select>*@
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Asignar" id="btnAsignar" class="btn btn-default" />*@
+                <input type="submit" value="Asignar" class="btn btn-default" />
+            </div>
+        </div>
+         
+
+
+
+}
+
+@*@section scripts
+{
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+         @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $("#btnAsignar").click(function () {
+                var usuario = $("#sUsuario").val();
+                var roles = $("#sRoles").val();
+                $.ajax({
+                    type: "post",
+                    url: "/Manage/AsignarRol?usuario=" + usuario+"?roles="+roles,
+                    contentType: "html"
+                @*var url = "@Url.Action("AsignarRol", "Manage")";
+                var usuario = $("#sUsuario").val();
+                var roles = $("#sRoles").val();
+                var data = { usuario: usuario, roles: roles };
+                $.post(url, data).done(function () {
+                    alert("Rol asignado con exito");
+                });
+
+            });
+        });
+    </script>
+}*@
+

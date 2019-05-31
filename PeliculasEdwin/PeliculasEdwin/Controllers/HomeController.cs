@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace PeliculasEdwin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //Declaración objeto dbcontext

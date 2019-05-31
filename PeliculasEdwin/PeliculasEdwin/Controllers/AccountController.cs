@@ -493,7 +493,7 @@ namespace PeliculasEdwin.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
+        
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)
@@ -507,7 +507,7 @@ namespace PeliculasEdwin.Controllers
                 RedirectUri = redirectUri;
                 UserId = userId;
             }
-
+            
             public string LoginProvider { get; set; }
             public string RedirectUri { get; set; }
             public string UserId { get; set; }

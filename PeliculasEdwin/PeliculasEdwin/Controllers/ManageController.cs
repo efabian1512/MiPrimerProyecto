@@ -7,6 +7,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PeliculasEdwin.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PeliculasEdwin.Roles;
+using PeliculasEdwin.Usuarios;
+using System.Collections.Generic;
 
 namespace PeliculasEdwin.Controllers
 {
@@ -371,6 +375,65 @@ namespace PeliculasEdwin.Controllers
                 return user.PhoneNumber != null;
             }
             return false;
+        }
+        [HttpGet]
+        public ActionResult CrearRol()
+        {
+            return View();
+        }
+        ApplicationDbContext db = new ApplicationDbContext();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearRol(CrearRolVieModel rol)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+                roleManager.Create(new IdentityRole(rol.Nombre));
+                return RedirectToAction("Index", "Manage");
+            }
+
+            return View();
+        }
+        [HttpGet]
+        public ActionResult AsignarRol()
+        {
+            var roles = new RolesServices();
+            var usuarios = new UsuariosServices();
+            ViewBag.ListaDoDeRoles = roles.ObtenerRoles();
+            ViewBag.ListaDoDeUsuarios = usuarios.ObtenerUsuarios();
+           // var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+           // var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+           //var roles= roleManager.Roles.ToList();
+           // ViewBag.ListaDoDeRoles = roles;
+           // var modelo = userManager.Users.ToList();
+            return View();
+            //return View(modelo);
+            
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //public ActionResult AsignarRol(AsignarRolViewModel informacion)
+        //{
+            public ActionResult AsignarRol(string usuario, List<string> roles)
+            {
+             
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+            foreach (var i in roles)
+            {
+                var rol1 = roleManager.FindById(i);
+                userManager.AddToRole(usuario, rol1.Name);
+            }
+           
+           //var usuario1 =userManager.FindById(usuario);
+           
+            return RedirectToAction("Index", "Manage");
         }
 
         public enum ManageMessageId

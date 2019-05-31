@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PeliculasEdwin.Models
 {
@@ -35,7 +37,7 @@ namespace PeliculasEdwin.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -54,7 +56,7 @@ namespace PeliculasEdwin.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -83,4 +85,19 @@ namespace PeliculasEdwin.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class CrearRolVieModel
+    {
+        [StringLength(50,ErrorMessage ="Máximo de caracteres permitidos {1}")]
+        [Display(Name ="Nombre del rol")]
+        public string Nombre { get; set; }
+
+    }
+
+    public class AsignarRolViewModel
+    {
+        public string usuario { get; set; }
+        public List<string> roles { get; set; }
+    }
+   
 }
