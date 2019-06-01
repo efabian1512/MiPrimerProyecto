@@ -262,6 +262,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\BaseRespuesta.cs" />
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
@@ -426,6 +427,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Manage\CrearRol.cshtml" />
     <Content Include="Views\Manage\AsignarRol.cshtml" />
+    <Content Include="Views\Manage\_AgregarMasRolesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

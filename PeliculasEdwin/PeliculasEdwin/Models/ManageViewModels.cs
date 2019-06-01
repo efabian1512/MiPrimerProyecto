@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace PeliculasEdwin.Models
 {
@@ -94,10 +95,31 @@ namespace PeliculasEdwin.Models
 
     }
 
-    public class AsignarRolViewModel
+    public class AsignarRolViewModel: IValidatableObject
     {
+        [Required(ErrorMessage ="Debe seleccionar usuario.")]
         public string usuario { get; set; }
+        [Required(ErrorMessage ="Debe seleccionar al menos un rol.")]
         public List<string> roles { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var errores = new List<ValidationResult>();
+            ApplicationDbContext db = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            foreach(var rol in roles) {
+              var ro= roleManager.FindById(rol);
+                var comprobar = userManager.IsInRole(usuario, ro.Name);
+                if (userManager.IsInRole(usuario, ro.Name))
+                {
+                   errores.Add(new ValidationResult("Al menos uno de los roles ya está asignado a este usuario.", new string[] { "roles" }));
+                    
+                }
+            }
+            return errores;
+            //throw new NotImplementedException();
+        }
     }
    
 }

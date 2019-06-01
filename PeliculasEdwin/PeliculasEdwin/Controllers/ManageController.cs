@@ -403,11 +403,12 @@ namespace PeliculasEdwin.Controllers
             var usuarios = new UsuariosServices();
             ViewBag.ListaDoDeRoles = roles.ObtenerRoles();
             ViewBag.ListaDoDeUsuarios = usuarios.ObtenerUsuarios();
-           // var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-           // var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-           //var roles= roleManager.Roles.ToList();
-           // ViewBag.ListaDoDeRoles = roles;
-           // var modelo = userManager.Users.ToList();
+            // var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            // var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            //var roles= roleManager.Roles.ToList();
+            // ViewBag.ListaDoDeRoles = roles;
+            // var modelo = userManager.Users.ToList();
+            ViewBag.Partial = "";
             return View();
             //return View(modelo);
             
@@ -415,25 +416,61 @@ namespace PeliculasEdwin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult AsignarRol(AsignarRolViewModel informacion)
-        //{
-            public ActionResult AsignarRol(string usuario, List<string> roles)
+        public ActionResult AsignarRol(AsignarRolViewModel informacion)
+        {
+            var Resultado = new BaseRespuesta();
+            //public ActionResult AsignarRol(string usuario, List<string> roles)
+            //{
+            if (!ModelState.IsValid)
             {
-             
-
+                var rol = new RolesServices();
+                var user = new UsuariosServices();
+                ViewBag.ListaDoDeRoles = rol.ObtenerRoles();
+                ViewBag.ListaDoDeUsuarios = user.ObtenerUsuarios();
+                ViewBag.Partial = "";
+                return View();
+            }
+            //if (!ModelState.IsValid)
+            //{
+            //    Resultado.Mensaje = "El usuario esta asignado al menos a un rol";
+            //    return Content(Resultado.Mensaje);
+            //}
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
             
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
 
-            foreach (var i in roles)
+            //foreach (var i in roles)
+            //{
+            //    var rol1 = roleManager.FindById(i);
+            //    userManager.AddToRole(usuario, rol1.Name);
+            //}
+
+            foreach (var i in informacion.roles)
             {
                 var rol1 = roleManager.FindById(i);
-                userManager.AddToRole(usuario, rol1.Name);
+                userManager.AddToRole(informacion.usuario, rol1.Name);
             }
-           
-           //var usuario1 =userManager.FindById(usuario);
-           
-            return RedirectToAction("Index", "Manage");
+
+
+            //var usuario1 =userManager.FindById(usuario);
+
+
+            //Resultado.Mensaje = "Roles asignados correctamente.";
+            ViewBag.Mensaje = "Roles asignados correctamente.";
+            //ViewBag.Home = "Home";
+            //ViewBag.Index = "Index";
+            //ViewBag.Manage = "Manage";
+            //ViewBag.AsignarRol = "AsignarRol";
+            //ViewBag.AsignarRol = "<" ;
+
+            //return RedirectToAction("Index", "Manage");
+            var roles = new RolesServices();
+            var usuarios = new UsuariosServices();
+            ViewBag.ListaDoDeRoles = roles.ObtenerRoles();
+            ViewBag.ListaDoDeUsuarios = usuarios.ObtenerUsuarios();
+            ViewBag.Partial = "_AgregarMasRolesPartial";
+
+            return View();           
         }
 
         public enum ManageMessageId

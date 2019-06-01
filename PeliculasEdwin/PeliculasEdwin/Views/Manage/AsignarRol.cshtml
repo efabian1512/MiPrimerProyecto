@@ -4,90 +4,135 @@
     ViewBag.Title = "Asignar roles";
 }
 
-<h2>AsignarRoles</h2>
+<h2>Asignar roles</h2>
+<br />
 
-@using (Html.BeginForm("AsignarRol","Manage"))
-{
+@using (Html.BeginForm("AsignarRol", "Manage"))
+ 
+
+    {
     @Html.AntiForgeryToken()
-   
-        @Html.Label("Seleccione usuario: ")
-     
-       
-        
-            @Html.DropDownListFor(model=>model.usuario, (List<SelectListItem>)ViewBag.ListaDoDeUsuarios,"Sin selección")
-    
-     
-        <br />
-        <br />
-
-           @Html.Label("Seleccione roles: ")
-            
-                @*@Html.DropDownListFor(model=>model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles,"Sin selección")*@
-   @Html.ListBoxFor(model => model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles, "Sin selección")
-
-    @*<label>Seleccione usuario</label>
-    <select>
-        @foreach(var user in ViewBag.ListaDoDeUsuarios)
-        {
-            <option value="@user.Id" name="usuario">@user.UserName</option>
-
-        }
-
-    </select>
-
-    <br />
-    <br />
-
-    <label>Seleccione roles</label>
-    <select>
-        @foreach (var roles in ViewBag.ListaDoDeRoles)
-        {
-            <option value="@roles.Id" name="roles"  >@roles.Name</option>
-
-        }
-
-    </select>*@
-
-
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            @Html.Label("Seleccione usuario: ")
+
+            @Html.DropDownListFor(model => model.usuario, (List<SelectListItem>)ViewBag.ListaDoDeUsuarios, "Sin selección")
+            <br />
+            @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+
+        </div>
+
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.Label("Seleccione roles: ")
+
+            @*@Html.DropDownListFor(model=>model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles,"Sin selección")*@
+
+            @Html.ListBoxFor(model => model.roles, (List<SelectListItem>)ViewBag.ListaDoDeRoles)
+            <br />
+            <br />
+            @Html.ValidationMessageFor(model => model.roles, "", new { @class = "text-danger" })
+
+        </div>
+
+        @*<label>Seleccione usuario</label>
+            <select>
+                @foreach(var user in ViewBag.ListaDoDeUsuarios)
+                {
+                    <option value="@user.Id" name="usuario">@user.UserName</option>
+
+                }
+
+            </select>
+
+            <br />
+            <br />
+
+            <label>Seleccione roles</label>
+            <select>
+                @foreach (var roles in ViewBag.ListaDoDeRoles)
+                {
+                    <option value="@roles.Id" name="roles"  >@roles.Name</option>
+
+                }
+
+            </select>*@
+
+        <br />
+        <br />
+        <div class="form-group">
+            @*<div class="col-md-offset-2 col-md-10">*@
                 @*<input type="submit" value="Asignar" id="btnAsignar" class="btn btn-default" />*@
                 <input type="submit" value="Asignar" class="btn btn-default" />
-            </div>
+            @*</div>*@
         </div>
-         
+    </div>
+
+    <br />
+    <br />
+    <div><span id="sp-resultado" class="text-success"></span></div>
+    
 
 
 
 }
+@{
+    <h4 class="text-success">@ViewBag.Mensaje</h4>;
+    <br />
+    string index = ViewBag.Index;
+    string home = ViewBag.Home;
+    string manage = ViewBag.Manage;
+    string AsignarRol = ViewBag.AsignarRol;
+    @*<a href="@Url.Action((string) ViewBag.Index,(string) ViewBag.Home)">Regresar al inicio.</a>*@
+    //Html.ActionLink("Regresar al incio.","Index","Home");
+    <br />
+    @*<a href="@Url.Action((string) ViewBag.AsignarRol,(string) ViewBag.Manage)">Asignar mas roles.</a>*@
+    //Html.ActionLink("Asignar más roles.", (string)ViewBag.AsignarRol, (string)ViewBag.Manage);
 
-@*@section scripts
+
+}
+@if (ViewBag.Partial != "") {
+@Html.Partial((string)ViewBag.Partial)
+
+}else
 {
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-<script src="~/Scripts/jquery-ui.js"></script>
-<script src="~/Scripts/jquery-1.12.4.min.js"></script>
-         @Scripts.Render("~/bundles/jqueryval")
+    @Html.ActionLink("Regresar al incio.", "Index", "Home");
+}
 
-    <script>
-        $(document).ready(function () {
-            $("#btnAsignar").click(function () {
-                var usuario = $("#sUsuario").val();
-                var roles = $("#sRoles").val();
-                $.ajax({
-                    type: "post",
-                    url: "/Manage/AsignarRol?usuario=" + usuario+"?roles="+roles,
-                    contentType: "html"
-                @*var url = "@Url.Action("AsignarRol", "Manage")";
-                var usuario = $("#sUsuario").val();
-                var roles = $("#sRoles").val();
-                var data = { usuario: usuario, roles: roles };
-                $.post(url, data).done(function () {
-                    alert("Rol asignado con exito");
-                });
+        @*@section scripts
+            {
+            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+            <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+            <script src="~/Scripts/jquery-ui.js"></script>
+            <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+                     @Scripts.Render("~/bundles/jqueryval")
 
-            });
-        });
-    </script>
-}*@
+                <script>
+                    $(document).ready(function () {
+                        $("#btnAsignar").click(function () {
+                            var usuario = $("#sUsuario").val();
+                            var roles = $("#sRoles").val();
+                            $.ajax({
+                                type: "post",
+                                url: "/Manage/AsignarRol?usuario=" + usuario+"?roles="+roles,
+                                contentType: "html"
+                            @*var url = "@Url.Action("AsignarRol", "Manage")";
+                            var usuario = $("#sUsuario").val();
+                            var roles = $("#sRoles").val();
+                            var data = { usuario: usuario, roles: roles };
+                            $.post(url, data).done(function () {
+                                alert("Rol asignado con exito");
+                            });
+
+                        });
+                    });
+                </script>
+            }*@
+        @section Scripts {
+        <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+       
+            @Scripts.Render("~/bundles/jqueryval")
+        }
 
