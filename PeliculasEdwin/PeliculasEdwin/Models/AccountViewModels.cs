@@ -65,6 +65,7 @@ namespace PeliculasEdwin.Models
 
     public class RegisterViewModel
     {
+        public string Id { get; set; }
         [Required(ErrorMessage ="El campo {0} es requerido.")]
         [EmailAddress]
         [StringLength(50,ErrorMessage ="El {0} debe ser de al menos {2} caracteres de longitud. ",MinimumLength =6)]
@@ -107,6 +108,11 @@ namespace PeliculasEdwin.Models
 
         [Display(Name = "Teléfono")]
         public string Telefono { get; set; }
+
+        public bool Estado { get; set; }
+
+        public List<string> NombreRoles { get; set; }
+      
 
     }
 

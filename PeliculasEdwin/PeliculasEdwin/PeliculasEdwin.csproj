@@ -211,6 +211,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="IHttpHandler1.cs" />
+    <Compile Include="Migrations\201906060206509_AdicionColumnaEstado.cs" />
+    <Compile Include="Migrations\201906060206509_AdicionColumnaEstado.Designer.cs">
+      <DependentUpon>201906060206509_AdicionColumnaEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,11 +264,16 @@
     <Compile Include="Migrations\201905281817272_RetiroDeColumnaTelefonoAspNet.Designer.cs">
       <DependentUpon>201905281817272_RetiroDeColumnaTelefonoAspNet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906061831279_AdicionDeColumnaRol.cs" />
+    <Compile Include="Migrations\201906061831279_AdicionDeColumnaRol.Designer.cs">
+      <DependentUpon>201906061831279_AdicionDeColumnaRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\BaseRespuesta.cs" />
     <Compile Include="Models\Comentario.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -273,7 +283,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesServices.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\UsuariosServices.cs" />
+    <Compile Include="PeliculasServices\PeliculasService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -328,6 +342,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\estilo.css" />
     <Content Include="Content\video-js.css" />
     <Content Include="Content\video-js.min.css" />
     <Content Include="Content\video-js.swf" />
@@ -353,6 +368,9 @@
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <Content Include="Scripts\jquery.form.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
@@ -428,6 +446,17 @@
     <Content Include="Views\Manage\CrearRol.cshtml" />
     <Content Include="Views\Manage\AsignarRol.cshtml" />
     <Content Include="Views\Manage\_AgregarMasRolesPartial.cshtml" />
+    <Content Include="Views\Manage\_RetirarMasRolesPartial.cshtml" />
+    <Content Include="Views\Manage\DesAsignarRol.cshtml" />
+    <Content Include="Views\Manage\ConfirmarDesAsignacionRol.cshtml" />
+    <Content Include="Views\Manage\Usuarios.cshtml" />
+    <Content Include="Views\Manage\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Manage\EliminarUsuario.cshtml" />
+    <Content Include="Views\Manage\_EliminarUsuarioPartial.cshtml" />
+    <Content Include="Views\Manage\EliminarUsuario1.cshtml" />
+    <Content Include="Views\Home\CargarVideo.cshtml" />
+    <Content Include="UploadHandler.ashx" />
+    <Content Include="Views\Home\_AgregarMasVideosPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -473,6 +502,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905281817272_RetiroDeColumnaTelefonoAspNet.resx">
       <DependentUpon>201905281817272_RetiroDeColumnaTelefonoAspNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906060206509_AdicionColumnaEstado.resx">
+      <DependentUpon>201906060206509_AdicionColumnaEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061831279_AdicionDeColumnaRol.resx">
+      <DependentUpon>201906061831279_AdicionDeColumnaRol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

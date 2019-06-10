@@ -4555,7 +4555,17 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #ffffff;
 }
+/*Mis clases*/
 
+.contador-porcentaje{
+    width:450px;
+    height:50px;
+    margin:100px auto;
+    font-size:50px;
+    text-align:center;
+    color:#fff;
+
+}
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
   border-color: #101010;
@@ -6813,4 +6823,5 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+
 }

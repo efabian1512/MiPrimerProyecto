@@ -23,6 +23,8 @@ namespace PeliculasEdwin.Models
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [Display(Name ="Fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
+        public bool Estado { get; set; }
+        public List<string> NombreRol { get; set; }
         //[Display(Name ="Teléfono")]
         //public string Telefono { get; set; }
         

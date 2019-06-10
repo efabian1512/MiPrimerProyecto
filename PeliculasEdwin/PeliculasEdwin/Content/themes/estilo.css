@@ -1,0 +1,21 @@
+﻿
+*{
+  box-sizing: border-box
+ }
+body{
+    margin:0;
+    padding:0;
+    background:#333;
+}
+
+/*.contador-porcentaje{
+    width:450px;
+    height:50px;
+    margin:100px auto;
+    font-size:50px;
+    text-align:center;
+    color:#fff;
+
+}*/
+
+

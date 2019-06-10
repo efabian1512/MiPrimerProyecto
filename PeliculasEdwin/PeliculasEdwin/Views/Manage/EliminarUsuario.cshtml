@@ -1,0 +1,29 @@
+﻿@model ApplicationUser
+@{
+    ViewBag.Title = "EliminarUsuario";
+}
+
+<h2>EliminarUsuario</h2>
+
+<h5>Está seguro que desea eliminar el usuario </h5>
+<h5>@Model.UserName</h5>
+
+
+
+@using (Html.BeginForm("EliminarUsuario1", "Manage", new { Id = Model.Id }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+}
+   
+        @Html.ActionLink("Regresar al incio.", "Index", "Home");
+        <br />
+        @Html.ActionLink("Regresar a la lista de usuarios.", "EliminarUsuario", "Manage");
+
+   
+

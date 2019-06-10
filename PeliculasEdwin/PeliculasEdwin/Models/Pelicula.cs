@@ -53,6 +53,7 @@ namespace PeliculasEdwin.Models
         [ScaffoldColumn(false)]
         [NotMapped]
         [Display(Name = "Cambiar Video")]
+        //public HttpPostedFileBase ArchivoDeVideo { get; set; }
         public HttpPostedFileBase ArchivoDeVideo { get; set; }
 
         public List<Comentario> Comentarios { get; set; }

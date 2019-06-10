@@ -1,0 +1,193 @@
+﻿@model PeliculaViewModel
+@{
+    ViewBag.Title = "CargarVideo";
+}
+
+<h2>CargarVideo</h2>
+
+@*@using (Ajax.BeginForm("CargarVideo","Home",new AjaxOptions(){HttpMethod ="POST"},new { enctype = "multipart/form-data" }))*@
+@using (Html.BeginForm("CargarVideo", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Label("Seleccione Película: ")
+
+    @Html.DropDownListFor(model => model.Id, (List<SelectListItem>)ViewBag.Peliculas, "Sin selección");
+    <div class="col-md-10">
+        <br />
+        @*@Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })*@
+        <br />
+        <input type="file" name="ArchivoDeVideo" id="fu1" />
+        <br />
+        <br />
+        @Html.ValidationMessageFor(model => model.ArchivoDeVideo, "", new { @class = "text-danger" })
+     </div>
+     <br />
+     <br />
+     <br />
+    <div class="col-md-10">
+        <input type="submit" value="Cargar Video" />
+        <br />
+        <br />
+    </div>
+}
+       
+        <div class="progress">
+            <div class="progress-bar">0%</div>
+        </div>
+
+<br />
+<br />
+@if (ViewBag.Partial != "")
+{
+    @Html.Partial((string)ViewBag.Partial)
+
+}
+else
+{
+    @Html.ActionLink("Regresar al incio.", "Index", "Home");
+}
+
+
+        @*@using (Html.BeginForm("CargarVideo","Home",FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Label("Seleccione Película: ")
+
+                @Html.DropDownListFor(model => model.Id, (List<SelectListItem>)ViewBag.Peliculas, "Sin selección");
+
+                <div class="col-md-10">
+                    <br />
+                    <br />
+                    <input type="file" name="ArchivoDeVideo" id="cargarVideo" />
+                    @*<input type="file" name="ArchivoDeVideo"/>*@
+
+        @*@Html.ValidationMessageFor(model => model.RutaDeVideo, "", new { @class = "text-danger" })*@
+        @*<br />
+                    <input type="button" id="btnCargarVideo" value="Cargar Video" />
+
+                </div>
+                <br /><br />
+                <div style="width:300px">
+                    <div id="progressbar" style="position:relative; display:none">
+                        <span id="progressbar-label" style="position:absolute; left:35%; top:20%">Cargando Video....</span>
+                    </div>
+               </div>
+               <br />
+               <br />
+
+            <input type="submit" value="Guardar" />*@
+
+        @* }*@
+
+        @*<body style="font-family:Arial">
+                <form id="form1" runat="server">
+
+                </form>
+            </body>*@
+        <div id="status"></div>
+        <style>
+            .progress {
+                position: relative;
+                width: 400px;
+                border: 1px solid #ddd;
+                padding: 1px;
+                display: none;
+            }
+
+            .progress-bar {
+                width: 0px;
+                height: 20px;
+                background-color: #57be65;
+            }
+        </style>
+
+        @section scripts{
+            @Scripts.Render("~/bundles/jqueryval")
+            <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+            <script src="~/Scripts/jquery-ui.js"></script>
+            @*<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+                <script type="text/javascript"></script>*@
+            @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+                <script src="~/Scripts/jquery.form.js"> </script>*@
+            <script src="http://malsup.github.com/jquery.form.js"></script>
+            <script>
+                (function () {
+                    var bar = $('.progress-bar');
+                    var percent = $('.progress-bar');
+                    var status = $('#status');
+                    var progress = $('.progress');
+
+                    $('form').ajaxForm({
+                        beforeSend: function () {
+                            status.empty();
+                            var percentValue = 'uploading 0%';
+                            bar.width(percentValue);
+
+                            percent.html(percentValue);
+                        },
+                        uploadProgress: function (event, position, total, percentComplete) {
+
+                            progress.fadeIn(500);
+                            var percentValue = percentComplete + '%';
+
+                            bar.width(percentValue);
+
+                            percent.html(percentValue);
+                        },
+                        success: function (d) {
+                            var percentValue = 'upload complete 100%';
+                            bar.width(percentValue);
+                            percent.html(percentValue);
+                            $('#fu1').val('');
+                            $("#Id").val();
+                            alert(d)
+                        },
+                        complete: function (xhr) {
+                            status.html(xhr.responseText);
+                        }
+                    });
+                })();
+            </script>
+            @*//$(document).ready(function () {
+                //    $('#btnCargarVideo').click(function (event) {
+                //        var files = $('#cargarVideo')[0].files;
+                //        var Id = $('#Id').val();
+                //        //var data = { Id: id };
+                //        if (files.length > 0) {
+                //            var formData = new FormData();
+                //            for (var i = 0; i < files.length; i++) {
+                //                formData.append(files[i].name, files[i]);
+                //            }
+                //            //formData.append(data, Id);
+
+                //        var progressbarDiv = $('#progressbar');
+                //        var progressbarLabel = $('#progressbar-label');
+                //        $.ajax({
+                //            url: "../UploadHandler.ashx?Id="+Id,
+                //            //url:"/Home/CargarVideo",
+                //            method: 'post',
+                //            data: formData,
+                //            contentType: false,
+                //            processData: false,
+                //            success: function()
+                //            {
+                //                progressbarLabel.text('Completado.');
+                //                progressbarDiv.fadeOut(2000);
+                //            },
+                //            error: function (err) {
+                //                alert(err.statusText)
+                //            }
+
+
+                //        });
+                //        progressbarLabel.text('Cargando Video....');
+                //        progressbarDiv.progressbar({
+                //            value: false
+                //        }).fadeIn(500);
+                //    }
+                //    });
+                //});
+
+                </script>*@
+
+        }

@@ -1,0 +1,46 @@
+﻿@model ConfirmarDesAsignacionRolViewModel
+@{
+    ViewBag.Title = "ConfirmarDesAsignacionRol";
+}
+
+<h2>Confirmar</h2>
+@using (Html.BeginForm("ConfirmarDesAsignacionRol", "Manage", new { usuario = Model.usuario, roles = Model.IdRol }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    //Html.Display("Roles a asignar a usuario " + Model.usuario + ":");
+    <h5>Roles a asignar a usuario @Model.NombreUsuario: </h5>
+    foreach (var rol in Model.NombreRoles)
+    {
+        <h6>@rol</h6>
+        <br />
+    }
+
+<br />
+<input type="submit" value="Confirmar" class="btn btn-success" />
+
+}
+@{
+
+    ViewBag.Partial = "";
+
+} 
+
+    <h4 class="text-success">@ViewBag.Mensaje</h4>
+    <br />
+    <br />
+   
+      
+
+    @if (ViewBag.Partial != "")
+    {
+        @Html.Partial((string)ViewBag.Partial)
+
+    }
+    else
+    {
+        @Html.ActionLink("Regresar al incio.", "Index", "Home");
+    }
+
+
+
+
