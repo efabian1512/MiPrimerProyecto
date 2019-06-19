@@ -458,7 +458,7 @@
     <Content Include="UploadHandler.ashx" />
     <Content Include="Views\Home\_AgregarMasVideosPartial.cshtml" />
     <Content Include="Views\Shared\SideBar.cshtml" />
-    <Content Include="Views\Manage\prueba.cshtml" />
+    <Content Include="Views\Manage\Administrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

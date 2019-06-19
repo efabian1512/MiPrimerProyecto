@@ -44,7 +44,7 @@ namespace PeliculasEdwin.Controllers
                 _signInManager = value;
             }
         }
-        public ActionResult prueba()
+        public ActionResult Administrar()
         {
             return View();
         }

@@ -6,9 +6,16 @@
     <span></span>
 </div>
 <ul>
-    <li>Home</li>
-    <li>About</li>
-    <li>Contact</li>
+
+    <li class="text-blanco">Mantenimiento películas</li>
+    <li>@Html.ActionLink("Registrar pelicula", "RegistrarPelicula", "Home", new { @class = "text-blanco" })</li>
+
+    <li class="text-blanco">Manejo de usuarios</li>
+    <li>@Html.ActionLink("Usuarios","Usuarios","Manage",new { @class="text-blanco"})</li>
+    <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage", new { @class = "text-blanco" })</li>
+    <li>@Html.ActionLink("Agregar Roles", "AsignarRol", "Manage", new { @class = "text-blanco" })</li>
+    <li>@Html.ActionLink("Quitar Roles", "DesAsignarRol", "Manage", new { @class = "text-blanco" })</li>
+    
 </ul>
 </div>
 
@@ -24,11 +31,11 @@
         width: 200px;
         height: 100%;
         background: #151719;
-        left:200px;
+        left:0px;
         transition:all 500ms linear;
     }
     #sidebar.active{
-      left:0px;
+      left:-200px;
 
     }
     #sidebar ul li{
@@ -50,6 +57,9 @@
         background:#151719;
         margin: 5px 0px;
     }
+    .text-blanco {
+  color: #f4f4f4;
+}
 </style>
 
 @section scripts{
