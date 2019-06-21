@@ -63,7 +63,7 @@ namespace PeliculasEdwin.Controllers
             return View(ModeloPelicula);
         }
         //Método get de la vsta para editar películas
-        [Authorize(Roles = "Editor,Administrador")]
+        [Authorize(Roles = "Editor,Administrador")]//prueba
         [HttpGet]
         public ActionResult Editar(int? id)
         {
