@@ -3,8 +3,11 @@
 @{
     ViewBag.Title = "RegistrarPelicula";
 }
-
-<h2>RegistrarPelicula</h2>
+@Html.Partial("_AdministrarPartial")
+<br />
+<br />
+<br />
+<h2>Registrar Pelicula</h2>
 <!--Registrar Pelicula-->
 
 @using (Html.BeginForm("RegistrarPelicula","Home",FormMethod.Post, new {enctype="multipart/form-data" }))
@@ -12,7 +15,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Pelicula</h4>
+        @*<h4>Pelicula</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

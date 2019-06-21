@@ -1,0 +1,79 @@
+﻿<div id="sidebar">
+
+    <div class="toggle-btn" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul>
+
+        <li class="text-blanco">Mantenimiento películas</li>
+        <li>@Html.ActionLink("Registrar pelicula", "RegistrarPelicula", "Manage", new { @class = "text-blanco" })</li>
+        <li>@Html.ActionLink("Cargar video de Película", "CargarVideo", "Manage", new { @class = "text-blanco" })</li>
+
+        <li class="text-blanco">Manejo de usuarios</li>
+        <li>@Html.ActionLink("Usuarios", "Usuarios", "Manage", new { @class = "text-blanco" })</li>
+        <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage", new { @class = "text-blanco" })</li>
+        <li>@Html.ActionLink("Agregar Roles", "AsignarRol", "Manage", new { @class = "text-blanco" })</li>
+        <li>@Html.ActionLink("Quitar Roles", "DesAsignarRol", "Manage", new { @class = "text-blanco" })</li>
+
+    </ul>
+</div>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+    }
+
+    #sidebar {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        background: #151719;
+        left: 0px;
+        transition: all 500ms linear;
+    }
+
+        #sidebar.active {
+            left: -200px;
+        }
+
+        #sidebar ul li {
+            color: rgba(230,230,230,0.9);
+            list-style: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(100,100,100,0.3);
+        }
+
+        #sidebar .toggle-btn {
+            position: absolute;
+            left: 230px;
+            top: 20px;
+        }
+
+            #sidebar .toggle-btn span {
+                display: block;
+                width: 30px;
+                height: 5px;
+                background: #151719;
+                margin: 5px 0px;
+            }
+
+    .text-blanco {
+        color: #f4f4f4;
+    }
+</style>
+
+@section scripts{
+    <script>
+function toggleSidebar(){
+
+    document.getElementById("sidebar").classList.toggle('active');
+    }
+
+
+
+    </script>
+}

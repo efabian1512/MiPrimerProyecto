@@ -415,7 +415,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\RegistrarPelicula.cshtml" />
+    <Content Include="Views\Manage\RegistrarPelicula.cshtml" />
     <Content Include="Views\Home\Ver.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
     <Content Include="Views\Home\Eliminar.cshtml" />
@@ -454,11 +454,12 @@
     <Content Include="Views\Manage\EliminarUsuario.cshtml" />
     <Content Include="Views\Manage\_EliminarUsuarioPartial.cshtml" />
     <Content Include="Views\Manage\EliminarUsuario1.cshtml" />
-    <Content Include="Views\Home\CargarVideo.cshtml" />
+    <Content Include="Views\Manage\CargarVideo.cshtml" />
     <Content Include="UploadHandler.ashx" />
     <Content Include="Views\Home\_AgregarMasVideosPartial.cshtml" />
     <Content Include="Views\Shared\SideBar.cshtml" />
     <Content Include="Views\Manage\Administrar.cshtml" />
+    <Content Include="Views\Shared\_AdministrarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
