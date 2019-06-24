@@ -4,7 +4,7 @@
     ViewBag.Title = "Peliculas";
 }
 
-<h2>Peliculas</h2>
+<h2 class="text-blanco">Peliculas</h2>
 <br />
 <br />
 <!--Cuadro de texto para realizar busqueda-->
@@ -12,16 +12,18 @@
 <br />
 <br />
 <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
-<div id="DataSearching">
-    @foreach (var imagenPelicula in Model)
-    {
-        <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a> 
+<div id="DataSearching" class="container1">
+    <ul class="list-image">
+        @foreach (var imagenPelicula in Model)
+        {
+            <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
 
-    }
+        }
+    </ul>
 </div>
-@{ 
+@*@{ 
     @Html.Partial("SideBar");
-}
+}*@
 
 @section scripts
      {

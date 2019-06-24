@@ -64,6 +64,41 @@ body {
 a:focus {
   outline: thin dotted;
 }
+/*Clases mias*/
+
+.graycolor{
+   
+    background-color:#464343;
+}
+.text-blanco {
+  color: #f4f4f4;
+}
+
+.container1{
+    position:relative;
+    top:20px;
+    width:100%;
+    height:auto;
+    margin:auto;
+    background:#222222;
+}
+
+container1 .list-image{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+
+}
+.container1 .list-image li img{
+    position:relative;
+
+}
+.container1 .list-image li{
+    margin-right:10px;
+    margin-bottom:10px;
+    list-style:none;
+}
+/*--------------------*/
 
 a:active,
 a:hover {
@@ -3270,6 +3305,7 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
+  /*font-weight: bold;*/
   line-height: 1.428571429;
   color: #333333;
   white-space: nowrap;
@@ -4374,6 +4410,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: left;
   margin-top: 15px;
   margin-bottom: 15px;
+  
 }
 
 @media (min-width: 768px) {
@@ -4400,10 +4437,15 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-text {
   color: #777777;
+  /*font-weight: bold;*/
+  /*font-weight: 300;*/
+  /*color:#fff7f7;*/
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777777;
+  /*color: #777777;*/
+  color:#fff7f7;
+  /*font-weight: 300;*/
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -4502,8 +4544,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse {
   background-color: #222222;
-  border-color: #080808;
+  border-color:none;
+  /*border-color: #080808;*/
 }
+
 
 .navbar-inverse .navbar-brand {
   color: #999999;
@@ -4516,11 +4560,19 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  /*color: #999999;*/
+  /*color:#c1bfbf;*/
+  /*color:#dddbdb;*/
+  color:#d6d4d4;
+  font-weight:bold;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  /*color: #999999;*/
+  /*color:#c1bfbf;*/
+  /*color:#dddbdb;*/
+  color:#d6d4d4;
+  font-weight:bold;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,

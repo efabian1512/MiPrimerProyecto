@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace PeliculasEdwin.Controllers
 {
-    //[Authorize(Roles="Usuario,Editor,Administrador")]
+    [Authorize(Roles="Usuario,Editor,Administrador")]
     public class HomeController : Controller
     {
         //Declaración objeto dbcontext

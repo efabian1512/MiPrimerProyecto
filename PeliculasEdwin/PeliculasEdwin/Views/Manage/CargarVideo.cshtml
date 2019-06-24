@@ -10,7 +10,7 @@
 <h2>CargarVideo</h2>
 
 @*@using (Ajax.BeginForm("CargarVideo","Home",new AjaxOptions(){HttpMethod ="POST"},new { enctype = "multipart/form-data" }))*@
-@using (Html.BeginForm("CargarVideo", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CargarVideo", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.Label("Seleccione Película: ")
