@@ -12,11 +12,16 @@
 <br />
 <br />
 <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
-<div id="DataSearching" class="container1">
-    <ul class="list-image">
+
+<div id="DataSearching" class="container2">
+    @*<ul id="UL" class="list-image2">
+
+    </ul>*@
+    <ul id="UL" class="list-image">
+
         @foreach (var imagenPelicula in Model)
         {
-            <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
+            <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250"/></a></li>
 
         }
     </ul>
@@ -38,8 +43,11 @@
                     var ValorBusqueda = $("#txtBuscar").val();
 
                     var SetData = $("#DataSearching");
+                    var ul = $("#UL");
                    
-                    SetData.html("");
+                    //SetData.html("");
+                    ul.html("");
+                    //SetData.html(ul);
                     //Uso de Ajax para llamar al metodo de filtrado de peliculas
                     $.ajax({
                         type: "post",
@@ -47,7 +55,8 @@
                         contentType: "html",
                         success: function (result) {
                             if (result.length == 0) {
-                                SetData.append('<span>No hay ninguna coincidencia.</span>');
+                                ul.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                //SetData.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
                             } else {
                                 $.each(result, function (indice, valor) {
                                   
@@ -57,8 +66,11 @@
                                     var content = ("@Url.Content("parametro-contenido")").toString();
                                     content = content.replace("parametro-contenido", valor.RutaDeImagen);
                                     content = content.substring(1, tamanio);
-                                    var Data = "<a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" alt=\""+valor.Título+"\""+" />"+"</a>";
-                                    SetData.append(Data);
+                                    var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
+                                    //SetData.append(Data);
+                                    ul.append(Data);
+                                    
+
 
                                     
 
