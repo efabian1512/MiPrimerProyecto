@@ -133,7 +133,93 @@ a:focus {
     list-style:none;
 }
 
+/*Estilos generales*/
+nav ul {
+    list-style:none;
+    padding:0;
+}
 
+nav a{
+   
+    color:#d6d4d4;
+    font-weight:bold;
+    display:block;
+    /*padding: 0 2.5em;*/
+    padding: 0 5em;
+    text-decoration:none;
+}
+
+nav a:hover{
+    background: rgba(0,0,0,.5);
+    color:#ffffff;
+    text-decoration:none;
+    transition: .4s;
+   
+}
+nav ul li{
+    line-height:6rem;
+    position:relative;
+}
+
+nav li  ul{
+    position: absolute;
+    /*display: block;*/
+    /*font-size:smaller;*/
+    z-index:1;
+    
+}
+nav > ul > li > ul{
+    top:100%;
+    font-size:smaller;
+}
+
+/*nav li ul li{
+    position:absolute;
+
+}*/
+
+/*nav li ul{
+    display:none;
+}
+
+nav li:hover > ul{
+    display:block;
+}*/
+/*Primer nivel*/
+
+nav >ul{
+    background:#222222;
+    display:table;
+    width:100%;
+}
+nav >ul > li{
+    float: left;
+}
+/*ppp*/
+
+.tamaño:hover{
+width:280px;
+}
+
+/*Segundo nivel*/
+
+nav li li {
+    background: #222222;
+    max-height:0;
+    overflow: hidden;
+    transition: all .5s;
+    width:280px;
+}
+
+nav li:hover >ul > li{
+    max-height:1000px;
+    overflow: visible;
+}
+/*Tercer nivel*/
+nav ul ul ul{
+left:100%;
+top:0;
+}
 /*--------------------*/
 
 a:active,
@@ -4318,6 +4404,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  
 }
 
 @media (max-width: 767px) {
@@ -4350,6 +4437,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-nav > li {
     float: left;
+    
   }
   .navbar-nav > li > a {
     padding-top: 15px;
@@ -4601,6 +4689,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   /*color:#dddbdb;*/
   color:#d6d4d4;
   font-weight:bold;
+ 
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -4609,7 +4698,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   /*color:#dddbdb;*/
   color:#d6d4d4;
   font-weight:bold;
+  display:block;
+  padding: 0 2.5em;
+  transition:4s;
+  
 }
+
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {

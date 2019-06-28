@@ -11,34 +11,68 @@
 @*<body >*@
 <body class="graycolor">
     @*<div class="navbar navbar-inverse navbar-fixed-top">*@
-    <div class="navbar navbar-inverse">
+    @*<div class="navbar navbar-inverse">*@
         @*<div class="navbar">*@
-            <div class="container">
+            @*<div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+                    </button>*@
                     @*@Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                </div>
+                @*</div>
                 <div class="navbar-collapse collapse">
 
-                    <ul class="nav navbar-nav ">
+                    <ul class="nav navbar-nav ">*@
 
-                        <
-                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        
+                        @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                         <li>@Html.ActionLink("Estrenos", "About", "Home")</li>
                         <li>@Html.ActionLink("Añadidas recientemente", "Contact", "Home")</li>&nbsp;&nbsp;
+                        <li>@Html.ActionLink("Administrar", "Administrar", "Manage")
+                            <ul class="desplegable">
+                                <li>@Html.ActionLink("Usuarios", "Usuarios", "Manage", new { @class = "text-blanco" })</li>
+                                <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage", new { @class = "text-blanco" })</li>
 
-                    </ul>
-                    <ul class="nav navbar-nav">
+                            </ul>
+                        </li>
+
+                    </ul>*@
+                    @*<ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Administrar", "Administrar", "Manage")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+                    </ul*@>
+                    @*@Html.Partial("_LoginPartial")
                 </div>
             </div>
-        </div>
+        </div>*@
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Estrenos", "About", "Home")</li>
+            <li>@Html.ActionLink("Añadidas recientemente", "Contact", "Home")</li>
+            <li class="tamaño">@Html.ActionLink("Administrar", "Administrar", "Manage")
+                <ul>
+            <li><a href=""> Mantenimiento Películas</a>
+                   <ul>
+                        <li>@Html.ActionLink("Registrar pelicula", "RegistrarPelicula", "manage")</li>
+                        <li>@Html.ActionLink("Cargar videos", "CargarVideo", "manage")</li>
+                    </ul>
+             </li>
+             <li><a href=""> Manejo de usuarios</a> <!---->
+                    <ul>
+                        <li>@Html.ActionLink("Usuarios", "Usuarios", "Manage")</li>
+                        <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage")</li>
+                        <li>@Html.ActionLink("Agregar Roles", "AsignarRol", "Manage")</li>
+                        <li>@Html.ActionLink("Quitar Roles", "DesAsignarRol", "Manage")</li>
+                    </ul>
+                
+                </li>
+              </ul>
+                
+              </ul>
+            
+    </nav>
     <div class="container body-content">
         @RenderBody()
         @*<hr />*@
