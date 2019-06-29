@@ -134,6 +134,24 @@ a:focus {
 }
 
 /*Estilos generales*/
+.barra {
+    list-style:none;
+    padding:0;
+}
+.barra a{
+     color:#d6d4d4;
+    font-weight:bold;
+    display:block;
+    /*padding: 0 2.5em;*/
+    padding: 0 5em;
+    text-decoration:none;
+
+}
+
+.barra li{
+line-height:6rem;
+position:relative;
+}
 nav ul {
     list-style:none;
     padding:0;
@@ -4401,9 +4419,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 20px;
+  /*padding-top: 10px;*/
+  /*padding-bottom: 10px;*/
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 10px;
   
 }
 
