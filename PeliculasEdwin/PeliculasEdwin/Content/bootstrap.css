@@ -133,28 +133,22 @@ a:focus {
     list-style:none;
 }
 
+body div > div > section > form> div >label{
+    position:absolute;
+    right:0;
+}
 /*Estilos generales*/
-.barra {
-    list-style:none;
-    padding:0;
-}
-.barra a{
-     color:#d6d4d4;
-    font-weight:bold;
-    display:block;
-    /*padding: 0 2.5em;*/
-    padding: 0 5em;
-    text-decoration:none;
 
-}
-
-.barra li{
-line-height:6rem;
-position:relative;
-}
 nav ul {
     list-style:none;
     padding:0;
+}
+
+.barra3 > ul{
+    float:left;
+}
+.barra3 > form >ul{
+   float:left;
 }
 
 nav a{
@@ -191,6 +185,7 @@ nav > ul > li > ul{
     font-size:smaller;
 }
 
+
 /*nav li ul li{
     position:absolute;
 
@@ -203,8 +198,111 @@ nav > ul > li > ul{
 nav li:hover > ul{
     display:block;
 }*/
-/*Primer nivel*/
+/*.estilo{
+    color:black;
+    position: absolute;
+    right:50%;
+}
+.estilos{
+    /*display: flex;*/
+/*d*//*isplay:table;
+background:#222222;
 
+width:100%;
+
+}*/
+/*.estilos .estilo li{
+    float:left;
+}
+/*Para el login*/
+.contenedor {
+    position:absolute;
+    top:0;
+	display:flex;
+	background:#222222;
+	width:100%;
+	background-image: url(images2/Fondo-Huawei-P20Lite-700x400.jpg);
+	/*background-image: url(../images/images.jpg);*/
+	background-position: center;
+	
+	
+    -webkit-text-stroke: 1px white;
+	
+
+}
+.centrar{
+    display:flex;
+    margin:auto;
+    position:relative;
+    height:100vh;
+
+
+}
+
+.centrar .centrado{
+position:relative;
+
+margin:auto;
+background:black;
+display:table;
+width:30%;
+color:white;
+height:50%;
+border-radius:20px;
+
+
+}
+.centrado h4{
+    margin-left:27%;
+    font-size:15px;
+    margin-right:-50%;
+    font-weight:bold;
+    
+    
+}
+.centrado hr{
+    width:150%;
+}
+
+.centrado .etiqueta > label{
+    margin-left:-40%;
+    margin-right:20%
+}
+.centrado .cuadrotexto{
+    margin-left:27%;
+    margin-right:-50%;
+}
+.contenedor > h1{
+	
+	color:transparent;
+    margin: auto;
+	line-height:5rem;
+    position:relative;
+	/*position: absolute;*/
+	right:20%;
+	font-size: 30px;
+/*background-image: url(../images/download.jpg);*/
+	background-image: url(images2/images.jpg);
+	background-position: center;
+	background-size: cover;
+	-webkit-background-clip:text;
+    -webkit-text-stroke: 1px white;
+
+	
+}
+
+/*Primer nivel*/
+div > nav > ul > li{
+
+    display:flex;
+    position: relative;
+}
+
+div > nav > ul > li > h1{
+color:white;
+    position: absolute;
+    right:50%;
+}
 nav >ul{
     background:#222222;
     display:table;
@@ -213,6 +311,32 @@ nav >ul{
 nav >ul > li{
     float: left;
 }
+nav >form >ul{
+    /*display:table;*/
+    position:absolute;
+    top:9%;
+    right:0;
+    
+    /*right:75%;*/
+}
+/*nav > form{
+top:25%;
+position:absolute;
+}*/
+
+
+nav > form > ul > li{
+    /*float: right !important;*/
+    float:left;
+    /*margin-right:0;*/
+     /*float: right !important;
+     float: right;*/
+}
+nav > form > ul{
+ display: table;
+ /*background:#222222;;*/
+}
+
 /*ppp*/
 
 .tamaño:hover{
@@ -4315,6 +4439,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-collapse .navbar-text:last-child {
     margin-right: 0;
+    
   }
 }
 

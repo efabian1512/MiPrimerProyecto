@@ -59,7 +59,7 @@
                         <li>@Html.ActionLink("Cargar videos", "CargarVideo", "manage")</li>
                     </ul>
              </li>
-             <li><a href=""> Manejo de usuarios</a> <!---->
+             <li><a href=""> Manejo de usuarios</a> 
                     <ul>
                         <li>@Html.ActionLink("Usuarios", "Usuarios", "Manage")</li>
                         <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage")</li>
@@ -70,12 +70,18 @@
                 </li>
 
               </ul>
+         
+               
+
+            
+                
            
                 
               </ul>
         @Html.Partial("_LoginPartial")
-            
+      
     </nav>
+  
     <div class="container body-content">
         @RenderBody()
         @*<hr />*@

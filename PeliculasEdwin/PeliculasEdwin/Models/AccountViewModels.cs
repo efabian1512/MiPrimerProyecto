@@ -50,7 +50,7 @@ namespace PeliculasEdwin.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico o Usuario")]
+        [Display(Name = "Usuario")]
         //[EmailAddress]
         public string Email { get; set; }
 

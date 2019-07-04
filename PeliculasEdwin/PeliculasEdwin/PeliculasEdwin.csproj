@@ -292,6 +292,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images2\color-degradado-fondos-degradados-multicolor-51200.jpg" />
+    <Content Include="Content\images2\download.jpg" />
+    <Content Include="Content\images2\download.png" />
+    <Content Include="Content\images2\Fondo-Huawei-P20Lite-700x400.jpg" />
+    <Content Include="Content\images2\images.jpg" />
     <Content Include="Content\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\images\ui-icons_555555_256x240.png" />
     <Content Include="Content\images\ui-icons_777620_256x240.png" />
@@ -429,7 +434,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Loginm.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -460,6 +465,7 @@
     <Content Include="Views\Shared\SideBar.cshtml" />
     <Content Include="Views\Manage\Administrar.cshtml" />
     <Content Include="Views\Shared\_AdministrarPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
