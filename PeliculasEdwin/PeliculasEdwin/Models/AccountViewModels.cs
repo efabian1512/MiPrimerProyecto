@@ -50,13 +50,13 @@ namespace PeliculasEdwin.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Usuario")]
+        [Display(Name = "Ingrese su nombre de Usuario")]
         //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
+        [Display(Name = "Ingrese su Contraseña")]
         public string Password { get; set; }
 
         [Display(Name = "Recordarme?")]

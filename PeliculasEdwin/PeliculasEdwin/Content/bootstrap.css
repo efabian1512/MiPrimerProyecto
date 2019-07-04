@@ -265,12 +265,21 @@ border-radius:20px;
 }
 
 .centrado .etiqueta > label{
-    margin-left:-40%;
-    margin-right:20%
+    margin-left:20%;
+    margin-right:-20%;
+    width:100%;
+    
+}
+.centrado .etiqueta1 > label{
+    margin-left:20%;
+    margin-right:-%;
+    width:100%;
+    
 }
 .centrado .cuadrotexto{
     margin-left:27%;
     margin-right:-50%;
+    width:100%;
 }
 .contenedor > h1{
 	
@@ -289,6 +298,9 @@ border-radius:20px;
     -webkit-text-stroke: 1px white;
 
 	
+}
+.login{
+
 }
 
 /*Primer nivel*/
