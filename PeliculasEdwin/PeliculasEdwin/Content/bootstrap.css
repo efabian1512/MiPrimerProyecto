@@ -214,6 +214,10 @@ width:100%;
 /*.estilos .estilo li{
     float:left;
 }
+/*Fondo blanco*/
+.fondoblanco{
+    background-color:white;
+}
 /*Para el login*/
 .contenedor {
     position:absolute;

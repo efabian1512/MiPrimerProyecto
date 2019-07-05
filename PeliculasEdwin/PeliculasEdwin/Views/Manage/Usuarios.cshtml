@@ -2,48 +2,50 @@
 @{
     ViewBag.Title = "Usuarios";
 }
-@Html.Partial("_AdministrarPartial")
+@*@Html.Partial("_AdministrarPartial")*@
 <br />
 <br />
 <br />
 
 <h2>Usuarios</h2>
+<div class="fondoblanco">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre de usuario</th>
+                <th>Nombre</th>
+                <th>Roles</th>
+                <th>Estado</th>
+                <th> </th>
+            </tr>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre de usuario</th>
-            <th>Nombre</th>
-            <th>Roles</th>
-            <th>Estado</th>
-            <th> </th>
-        </tr>
 
-
-    </thead>
-    <tbody>
-        @foreach (var usuario in Model)
-        {
-        <tr>
-            <td>@usuario.Id</td>
-            <td>@usuario.NombreUsuario</td>
-            <td>@usuario.Nombre</td>
-            <td>@foreach(var rol in usuario.NombreRoles)
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
             {
-                <span>@rol</span>
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.NombreUsuario</td>
+                    <td>@usuario.Nombre</td>
+                    <td>
+                        @foreach (var rol in usuario.NombreRoles)
+                    {
+                        <span>@rol</span>
+                    }
+                </td>
+                <td>@Html.DisplayFor(model => usuario.Estado)</td>
+                <td>@Html.ActionLink("Eliminar", "EliminarUsuario", "Manage", new { Id = usuario.Id }, null)</td>
+
+
+
+
+
+            </tr>
             }
-           </td>
-            <td>@Html.DisplayFor(model=>usuario.Estado)</td>
-            <td>@Html.ActionLink("Eliminar","EliminarUsuario","Manage",new { Id=usuario.Id},null)</td>
 
-
-           
-
-
-        </tr>
-        }
-        
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
