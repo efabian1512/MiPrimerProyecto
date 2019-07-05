@@ -257,22 +257,26 @@ border-radius:20px;
     font-size:15px;
     margin-right:-50%;
     font-weight:bold;
+    margin-bottom:-5%;
+    margin-top:8%;
     
     
 }
 .centrado hr{
     width:150%;
+    margin-right:-50%;
+    margin-left:2.5%;
 }
 
 .centrado .etiqueta > label{
-    margin-left:20%;
-    margin-right:-20%;
+    margin-left:0%;
+    margin-right:-30%;
     width:100%;
     
 }
 .centrado .etiqueta1 > label{
-    margin-left:20%;
-    margin-right:-%;
+    margin-left:-16%;
+    margin-right:-50%;
     width:100%;
     
 }
@@ -299,6 +303,7 @@ border-radius:20px;
 
 	
 }
+
 .login{
 
 }
