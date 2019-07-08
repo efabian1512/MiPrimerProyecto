@@ -70,6 +70,9 @@ a:focus {
    
     background-color:#464343;
 }
+.bodymargin{
+ margin:2%;
+}
 .text-blanco {
   color: #f4f4f4;
 }
@@ -333,7 +336,7 @@ nav >ul > li{
 nav >form >ul{
     /*display:table;*/
     position:absolute;
-    top:9%;
+    top:7%;
     right:0;
    
     

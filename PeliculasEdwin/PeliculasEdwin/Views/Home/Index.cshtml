@@ -9,7 +9,8 @@
 <head>
     @*<meta name="viewport" content="width=device-width" />*@
     <title>Index</title>
-    <meta charset="utf-8" />
+    @*<meta charset="utf-8" />*@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*<title>@ViewBag.Title - Mi aplicación ASP.NET</title>*@
     @Styles.Render("~/Content/css")
@@ -62,41 +63,47 @@
         @Html.Partial("_LoginPartial")
 
     </nav>
+    <div class="container body-content">
+        <h2 class="text-blanco">Peliculas</h2>
+        <br />
+        <br />
+        <!--Cuadro de texto para realizar busqueda-->
+        <input type="text" id="txtBuscar" size="30" placeholder="Buscar" />
+        <br />
+        <br />
+        <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
 
-    <h2 class="text-blanco">Peliculas</h2>
-    <br />
-    <br />
-    <!--Cuadro de texto para realizar busqueda-->
-    <input type="text" id="txtBuscar" size="30" placeholder="Buscar" />
-    <br />
-    <br />
-    <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
+        <div id="DataSearching" class="container2">
+            @*<ul id="UL" class="list-image2">
 
-    <div id="DataSearching" class="container2">
-        @*<ul id="UL" class="list-image2">
+                </ul>*@
+            <ul id="UL" class="list-image">
 
-            </ul>*@
-        <ul id="UL" class="list-image">
-
-            @foreach (var imagenPelicula in Model)
+                @foreach (var imagenPelicula in Model)
             {
-                <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
+                    <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
 
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     </div>
-    @*@{
-            @Html.Partial("SideBar");
-        }*@
+        @*@{
+                @Html.Partial("SideBar");
+            }*@
 
 
-    @*@section scripts*@
-     @*{*@
+        @*@section scripts*@
+        @*{*@
+        <script src="/Scripts/jquery-1.12.4.js"></script>
+
+        <script src="/Scripts/bootstrap.js"></script>
+        <script src="/Scripts/respond.js"></script>
+
         <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
         <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
         <script src="~/Scripts/jquery-ui.js"></script>
         <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    
+
         <script>
             //Programacion del evento keyup del cuadro de texto txtBuscar
             $(document).ready(function () {
@@ -147,27 +154,27 @@
                 });
             });
 
-           
+
 
         </script>
-    @*}*@
+        @*}*@
 
 
-    @*<div class="container body-content">
-        @RenderBody()
-        @*<hr />*@
+        @*<div class="container body-content">
+            @RenderBody()
+            @*<hr />*@
         @*<footer>
             @*<p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>*@
         @*</footer>*@
-    @*</div>*@
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @*@RenderSection("scripts", required: false)*@
-    @*<style>
-    *{
-        padding:10%;
-        margin:10%;
-    }
-    </style>*@
+        @*</div>*@
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @*@RenderSection("scripts", required: false)*@
+        @*<style>
+            *{
+                padding:10%;
+                margin:10%;
+            }
+            </style>*@
 </body>
 </html>

@@ -26,7 +26,11 @@ namespace PeliculasEdwin.Controllers
             return View(ModeloPeliculas);
         }
         //Método para filtrar películas por título
-        
+        public ActionResult Index1()
+        {
+            var ModeloPeliculas = db.PeliculasEdwin.ToList();
+            return View(ModeloPeliculas);
+        }
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
             var modelo = db.PeliculasEdwin.Where(x => x.Título.Contains(ValorBusqueda) || ValorBusqueda == null).ToList();
