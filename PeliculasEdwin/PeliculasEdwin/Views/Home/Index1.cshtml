@@ -1,0 +1,95 @@
+﻿@model List<Pelicula>
+
+@{
+    Layout = null;
+}
+
+<h2 class="text-blanco">Peliculas</h2>
+<br />
+<br />
+<!--Cuadro de texto para realizar busqueda-->
+<input type="text" id="txtBuscar" size="30" placeholder="Buscar"/>
+<br />
+<br />
+<!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
+
+<div id="DataSearching" class="container2">
+    @*<ul id="UL" class="list-image2">
+
+    </ul>*@
+    <ul id="UL" class="list-image">
+
+        @foreach (var imagenPelicula in Model)
+        {
+            <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250"/></a></li>
+
+        }
+    </ul>
+</div>
+@*@{ 
+    @Html.Partial("SideBar");
+}*@
+
+@section scripts
+     {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
+            //Programacion del evento keyup del cuadro de texto txtBuscar
+            $(document).ready(function () {
+                $("#txtBuscar").keyup(function () {
+                    var ValorBusqueda = $("#txtBuscar").val();
+
+                    var SetData = $("#DataSearching");
+                    var ul = $("#UL");
+                   
+                    //SetData.html("");
+                    ul.html("");
+                    //SetData.html(ul);
+                    //Uso de Ajax para llamar al metodo de filtrado de peliculas
+                    $.ajax({
+                        type: "post",
+                        url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                        contentType: "html",
+                        success: function (result) {
+                            if (result.length == 0) {
+                                ul.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                //SetData.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                            } else {
+                                $.each(result, function (indice, valor) {
+                                  
+                                    var tamanio = valor.RutaDeImagen.length;
+                                    var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                    url = url.replace("parametro-id", valor.Id);
+                                    var content = ("@Url.Content("parametro-contenido")").toString();
+                                    content = content.replace("parametro-contenido", valor.RutaDeImagen);
+                                    content = content.substring(1, tamanio);
+                                    var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
+                                    //SetData.append(Data);
+                                    ul.append(Data);
+                                    
+
+
+                                    
+
+
+
+                                });
+                            }
+
+
+
+                        }
+                    });
+                });
+            });
+
+
+    </script>
+}
+
+
+
+

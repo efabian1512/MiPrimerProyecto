@@ -419,7 +419,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Manage\RegistrarPelicula.cshtml" />
     <Content Include="Views\Home\Ver.cshtml" />
     <Content Include="Views\Home\Editar.cshtml" />
@@ -466,6 +466,7 @@
     <Content Include="Views\Manage\Administrar.cshtml" />
     <Content Include="Views\Shared\_AdministrarPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

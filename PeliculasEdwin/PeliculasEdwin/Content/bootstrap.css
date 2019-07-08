@@ -308,15 +308,13 @@ border-radius:20px;
 	
 }
 
-.login{
 
-}
 
 /*Primer nivel*/
 div > nav > ul > li{
 
-    display:flex;
-    position: relative;
+    /*display:flex;
+    position: relative;*/
 }
 
 div > nav > ul > li > h1{
@@ -337,6 +335,7 @@ nav >form >ul{
     position:absolute;
     top:9%;
     right:0;
+   
     
     /*right:75%;*/
 }
