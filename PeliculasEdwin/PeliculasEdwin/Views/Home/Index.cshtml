@@ -11,7 +11,9 @@
     <title>Index</title>
     @*<meta charset="utf-8" />*@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-sclae=1.0">
+    <script src="https://kit.fontawesome.com/448095230c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     @*<title>@ViewBag.Title - Mi aplicación ASP.NET</title>*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -63,6 +65,30 @@
         @Html.Partial("_LoginPartial")
 
     </nav>
+    <div class="contenedor-menu">
+        @*<a href="#" class="btn-menu">Menu<i class="fa fa-bars"></a>*@
+        <ul class="menu">
+            <li>
+                <a href="#"><i class="fa fa-chevron-right"> Item 1</i></a>
+                <ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                    <li><a href="#">Item 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+            <li><a href="#">Item 4</a>
+                <ul>
+                    <li><a href="#"><i class="fa fa-chevron-right"> Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                    <li><a href="#">Item 4</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <div class="container body-content">
         <h2 class="text-blanco">Peliculas</h2>
         <br />
