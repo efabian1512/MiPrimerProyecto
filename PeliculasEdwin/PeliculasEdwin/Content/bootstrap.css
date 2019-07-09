@@ -421,8 +421,27 @@ top:0;
    margin-left: 10px;
 }
 .principal .contenedor-menu .menu ul{
-    /*display:none;*/
+    display:none;
 
+}
+@media screen and (max-width: 450px){
+body{
+    padding-top: 80px;
+}
+.contenedor-menu{
+    margin:0;
+    width: 100%;
+    position: fixed;
+    top:0;
+    z-index:1000;
+
+}
+.btn-menu{
+    display:block;
+}
+.principal .contenedor-menu .menu{
+    display:none;
+}
 }
 .principal .contenedor-menu .menu li ul li a{
     background: #424242;
