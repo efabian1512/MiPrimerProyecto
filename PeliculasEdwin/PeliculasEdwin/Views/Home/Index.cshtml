@@ -65,11 +65,12 @@
         @Html.Partial("_LoginPartial")
 
     </nav>
+    <div class="principal">
     <div class="contenedor-menu">
-        @*<a href="#" class="btn-menu">Menu<i class="fa fa-bars"></a>*@
+        <a href="#" class="btn-menu">Menu<i class="fa fa-bars"></i></a>
         <ul class="menu">
             <li>
-                <a href="#"><i class="fa fa-chevron-right"> Item 1</i></a>
+                <a href="#"><i class="icono izquierda fas fa-video"></i> Item 1<i class="icono derecha fa fa-chevron-down"></i></a>
                 <ul>
                     <li><a href="#">Item 1</a></li>
                     <li><a href="#">Item 2</a></li>
@@ -79,15 +80,16 @@
             </li>
             <li><a href="#">Item 2</a></li>
             <li><a href="#">Item 3</a></li>
-            <li><a href="#">Item 4</a>
+            <li><a href="#"><i class="icono izquierda fas fa-calendar-alt"></i> Item 4 <i class="icono derecha fa fa-chevron-down"></i></a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-chevron-right"> Item 1</a></li>
+                    <li><a href="#">Item 1</a></li>
                     <li><a href="#">Item 2</a></li>
                     <li><a href="#">Item 3</a></li>
                     <li><a href="#">Item 4</a></li>
                 </ul>
             </li>
         </ul>
+    </div>
     </div>
     <div class="container body-content">
         <h2 class="text-blanco">Peliculas</h2>
