@@ -14,11 +14,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-sclae=1.0">
     <script src="https://kit.fontawesome.com/448095230c.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="~/Content/estilos/estilos.css" rel="stylesheet" />
     @*<title>@ViewBag.Title - Mi aplicación ASP.NET</title>*@
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
 </head>
-<body class="graycolor cen">
+@*<body class="graycolor cen">*@
+<body class="graycolor">
     @model List<Pelicula>
 
     @*@{
@@ -91,30 +93,37 @@
         </ul>
     </div>
     </div>
-    <div class="container body-content">
-        <h2 class="text-blanco">Peliculas</h2>
-        <br />
-        <br />
-        <!--Cuadro de texto para realizar busqueda-->
-        <input type="text" id="txtBuscar" size="30" placeholder="Buscar" />
-        <br />
-        <br />
-        <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
+    @*<div class="container body-content">*@
+    <div>
+        @*<div class="container">*@
+        <div class="contenedorTitulo">
+            @*<h2 class="text-blanco">Peliculas</h2>*@
+            <h2>Peliculas</h2>
 
-        <div id="DataSearching" class="container2">
-            @*<ul id="UL" class="list-image2">
+            <br />
+            <br />
+            <!--Cuadro de texto para realizar busqueda-->
+            <input type="text" id="txtBuscar" size="30" placeholder="Buscar" class="form-control" />
+            @*<input type="search" id="txtBuscar" size="30" placeholder="Buscar" />*@
+            <br />
+            <br />
+        </div>
+            <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
+
+            <div id="DataSearching" class="container2 clear">
+                @*<ul id="UL" class="list-image2">
 
                 </ul>*@
-            <ul id="UL" class="list-image">
+                <ul id="UL" class="list-image">
 
-                @foreach (var imagenPelicula in Model)
+                    @foreach (var imagenPelicula in Model)
             {
-                    <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
+                        <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
 
-                }
-            </ul>
+                    }
+                </ul>
+            </div>
         </div>
-    </div>
         @*@{
                 @Html.Partial("SideBar");
             }*@
@@ -124,7 +133,7 @@
         @*{*@
         <script src="/Scripts/jquery-1.12.4.js"></script>
 
-        <script src="/Scripts/bootstrap.js"></script>
+        @*<script src="/Scripts/bootstrap.js"></script>*@
         <script src="/Scripts/respond.js"></script>
 
         <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
@@ -230,7 +239,8 @@
         @*</footer>*@
         @*</div>*@
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
+        @*@Scripts.Render("~/bundles/bootstrap")*@
+      
         @*@RenderSection("scripts", required: false)*@
         @*<style>
             *{
