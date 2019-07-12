@@ -235,6 +235,7 @@ body{
     top:0;
     right:0;
     z-index:1000;
+    height:300px;
 
 }
 .btn-menu{
@@ -247,6 +248,8 @@ body{
 .principal .contenedor-menu .menu li ul li a{
     background: #424242;
     color:#e9e9e9;
+    /*padding:20px 30px;*/
+
 }
 .principal .contenedor-menu .menu .activado > a{
     background: #1a95d5;
@@ -298,9 +301,12 @@ body{
 /*cuadro textos*/
 .form-control {
   display: block;
-  width: 100%;
+  /*width: 100%;
   height: 34px;
-  padding: 6px 12px;
+  padding: 6px 12px;*/
+  width: 20%;
+  height:25px;
+  padding: 4px 8px;
   font-size: 14px;
   line-height: 1.428571429;
   color: #555555;
