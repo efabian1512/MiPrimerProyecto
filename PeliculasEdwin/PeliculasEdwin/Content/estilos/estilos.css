@@ -4,6 +4,7 @@
     margin:0;
 }
 body {
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /*Estilos generales*/
 nav{
@@ -195,8 +196,10 @@ top:0;
     min-width:300px;
     margin: 50px;
     display: inline-block;
-    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
     line-height:18px;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-weight:bold;
 }
 
 .principal .contenedor-menu .menu{
@@ -265,12 +268,20 @@ body{
 .principal .contenedor-menu a{
     text-decoration: none;
     color:#fff;
+
+    /*padding:100px;
+    margin:200px;*/
+
 }
 .principal .contenedor-menu .menu li a{
-    color:#494949;
+    /*color:#494949;*/
     display: block;
-    padding: 15px 20px;
-    background: #e9e9e9;
+    padding: 50px 20px;
+    /*background: #e9e9e9;*/
+    background:#222222;
+    color:#d6d4d4;
+    font-weight:bold;
+    
 }
 
 .btn-menu{
@@ -285,7 +296,7 @@ body{
     /*float:ri;*/
     top:150px;
     height:300px;
-    left:-3%;
+    left:-4%;
     /*right:0;*/
 }
 /**/
