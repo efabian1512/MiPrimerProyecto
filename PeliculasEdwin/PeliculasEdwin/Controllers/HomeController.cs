@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace PeliculasEdwin.Controllers
 {
-    [Authorize(Roles="Usuario,Editor,Administrador")]
+    //[Authorize(Roles="Usuario,Editor,Administrador")]
     public class HomeController : Controller
     {
         //Declaración objeto dbcontext
@@ -19,17 +19,47 @@ namespace PeliculasEdwin.Controllers
         //Método get del index donde se cargan todas las películas
         [HttpGet]
         //[Authorize]
-        [Authorize(Roles = "Usuario,Editor,Administrador")]
+        //[Authorize(Roles = "Usuario,Editor,Administrador")]
         public ActionResult Index()
         {
+            AnoServices year = new AnoServices();
+            ViewBag.Ano = year.ObtenerAno();
+            ViewBag.Inicio = " ";
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
         }
         //Método para filtrar películas por título
         public ActionResult Index1()
         {
+           
             var ModeloPeliculas = db.PeliculasEdwin.ToList();
             return View(ModeloPeliculas);
+        }
+         public ActionResult BuscarPorAno(string ano)
+        {
+            var modelo = db.PeliculasEdwin.Where(x => x.Año == ano).ToList();
+            return Json(modelo,JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult BuscarGenero(string Genero)
+        {
+            
+            var modelo1 = db.PeliculasEdwin.ToList();
+            var modelo = db.PeliculasEdwin.Where(x => x.Género == Genero).ToList();
+            if (modelo.Count > 0)
+            {
+                ViewBag.Genero = "Películas de " + Genero;
+                ViewBag.Inicio = "_Inicio_Partial";
+            }else
+            {
+                ViewBag.Genero = "No hubo ninguna coincidencia.";
+                ViewBag.Inicio = "_Inicio_Partial";
+                return View("Index",modelo1);
+            }
+           
+            return View("Index",modelo);
+
         }
         public JsonResult BuscandoPeliculas(string ValorBusqueda)
         {
@@ -54,11 +84,11 @@ namespace PeliculasEdwin.Controllers
             return View();
         }
         //Método get de la vista donde se registran las películas
-        [Authorize(Roles = "Editor,Administrador")]
+        //[Authorize(Roles = "Editor,Administrador")]
         
        
         //Método get de la vista que presenta los detalles de las películas y permite reproducirlas
-        [Authorize(Roles = "Usuario,Editor,Administrador")]
+       // [Authorize(Roles = "Usuario,Editor,Administrador")]
         [HttpGet]
         public ActionResult Ver([Bind(Include = "Id")]Pelicula peliculaDetalles)
         {
@@ -67,7 +97,7 @@ namespace PeliculasEdwin.Controllers
             return View(ModeloPelicula);
         }
         //Método get de la vsta para editar películas
-        [Authorize(Roles = "Editor,Administrador")]//prueba
+       // [Authorize(Roles = "Editor,Administrador")]//prueba
         [HttpGet]
         public ActionResult Editar(int? id)
         {
@@ -82,7 +112,7 @@ namespace PeliculasEdwin.Controllers
         }
 
         //Método post de la vista para editar películas
-        [Authorize(Roles = "Editor,Administrador")]
+        //[Authorize(Roles = "Editor,Administrador")]
         [HttpPost]
         public ActionResult Editar([Bind(Include = "Id,Título,Género,Duración,País,Año,EnCarTelera,Sinopsis,ArchivoDeImagen,RutaDeImagen,ArchivoDeVideo,RutaDeVideo")]Pelicula pelicula)
         {
