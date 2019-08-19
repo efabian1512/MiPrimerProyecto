@@ -16,7 +16,9 @@ nav ul {
     list-style:none;
     padding:0;
 }
-
+.blanco a{
+    color:#222222;
+}
 .barra3 > ul{
     float:left;
 }

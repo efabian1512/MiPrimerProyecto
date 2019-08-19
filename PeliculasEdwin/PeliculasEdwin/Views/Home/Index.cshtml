@@ -183,7 +183,7 @@
                         }
                      
                     </ul>
-                    <span id="refresar"></span>
+                    <span id="regresar" class="blanco"></span>
                     @if (ViewBag.Inicio != " ")
                     {
                         <div class="btn btn-primary">
@@ -253,7 +253,7 @@
                 var opcion = $("#Lista").val();
                 var select = $("#Lista");
                 var SetData = $("#DataSearching");
-                var refreso =$("#refresar");
+                var regreso =$("#regresar");
                 var ul = $("#UL");
                 ul.html("");
                 $.ajax({
@@ -276,10 +276,13 @@
                                         var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
                                         //SetData.append(Data);
                                         ul.append(Data);
-                                        select.html("Sin seleccion");
+                                        var volverInicioUrl = "@Url.Action("Index","Home")";
+                                        var volverInicio = "<a href=\"" + volverInicioUrl + "\"" + ">" +"Volver a todas las peliculas."+ "</a>";
+
+                                        //select.html("Sin seleccion");
                                     
                                         
-                                        refreso.html("Prueba");
+                                        regreso.append(volverInicio);
 
 
 
