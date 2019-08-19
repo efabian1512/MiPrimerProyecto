@@ -92,7 +92,14 @@
                 
                 <div class="smenu">
                     <a href="#">
-                       @Html.DropDownList("Lista",(List<SelectListItem>)ViewBag.Ano,"Sin selección")
+                        <div class="customselect">
+                            <div class="select">
+                       
+                           
+                               @Html.DropDownList("Lista", (List<SelectListItem>)ViewBag.Ano, "Sin selección")
+                                
+                            </div>
+                        </div>
                     </a>
                     
                 </div>
@@ -174,7 +181,9 @@
                             <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
 
                         }
+                     
                     </ul>
+                    <span id="refresar"></span>
                     @if (ViewBag.Inicio != " ")
                     {
                         <div class="btn btn-primary">
@@ -242,7 +251,9 @@
 
             $("select").change(function(){
                 var opcion = $("#Lista").val();
+                var select = $("#Lista");
                 var SetData = $("#DataSearching");
+                var refreso =$("#refresar");
                 var ul = $("#UL");
                 ul.html("");
                 $.ajax({
@@ -265,8 +276,10 @@
                                         var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
                                         //SetData.append(Data);
                                         ul.append(Data);
-
-
+                                        select.html("Sin seleccion");
+                                    
+                                        
+                                        refreso.html("Prueba");
 
 
 
@@ -282,7 +295,7 @@
 
              });
              });
-             
+
         </script>
 
             <script>
