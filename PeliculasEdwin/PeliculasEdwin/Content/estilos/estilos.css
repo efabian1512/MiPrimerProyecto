@@ -30,13 +30,64 @@ nav ul {
     text-align:center;
     border-radius:5px;
     padding:5px 10px;
+    border: 1px solid #d6d4d4;
+
+}
+
+.blanco a:focus {
+    outline:none;
+}
+
+.blanco a:before{
+    content:'';
+    display:block;
+    position: absolute;
+    background:rgba(255,255,255,.5);
+    width:60px;
+    height:100%;
+    left:0;
+    top:0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+
+
+
+
+}
+
+blanco a:after{
+    content:'';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,.2);
+    width:30px;
+    height:100%;
+    left:30px;
+    top:0;
+    opacity:0;
+    filter: blur(30px);
+    transform:translate(-100px) scaleX(-15deg);
 
 }
 
 .blanco a:hover{
     color:white;
     background:black;
+    border: 1px solid white;
+    cursor: pointer;
 }
+ .blanco a:hover:before{
+     transform: translateX(300px) skewX(-15deg);
+     opacity: .6;
+     transition: .7s;
+ }
+
+ .blanco a:hover:before{
+     transform: translateX(300px) skewX(-15deg);
+     opacity: 1;
+     transition: .7s;
+ }
 .barra3 > ul{
     float:left;
 }
@@ -634,11 +685,13 @@ opacity: 0;
 
 .item:hover .smenu{
 max-height: 10em;	
+
 	
 }
-.btn:hover{
+.btn1:hover{
    /*background:black;*/
-    background: rgba(0,0,0,.5);
+   background: rgba(0,0,0,.5);
+  
     /*background: rgba(0,0,0,.5);*/
     color:#ffffff;
    
