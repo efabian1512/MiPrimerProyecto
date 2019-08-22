@@ -30,8 +30,9 @@ namespace PeliculasEdwin.Models
         [StringLength(20, ErrorMessage = "Ha sobrepasado el maximo de caracteres permitidos.")]
         public string País { get; set; }
         [Required(ErrorMessage ="El campo {0} es requerido.")]
-        [StringLength(8)]
-        public string Año { get; set; }
+        // [StringLength(8)]
+        [Display(Name = "Fecha de emisión")]
+        public DateTime Año { get; set; }
 
         [Display(Name = "En Cartelera")]
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -57,6 +58,8 @@ namespace PeliculasEdwin.Models
         public HttpPostedFileBase ArchivoDeVideo { get; set; }
 
         public List<Comentario> Comentarios { get; set; }
+        [Display(Name = "En Cartelera")]
+        public DateTime FechaDeAdicion { get; set; }
 
 
 

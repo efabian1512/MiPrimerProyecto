@@ -677,7 +677,9 @@ namespace PeliculasEdwin.Controllers
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 pelicula.RutaDeImagen = "~/Images/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                pelicula.FechaDeAdicion = DateTime.Now;
                 pelicula.ArchivoDeImagen.SaveAs(fileName);
+
                 //string fileNameVideo = Path.GetFileNameWithoutExtension(pelicula.ArchivoDeVideo.FileName);
                 //string extensionVideo = Path.GetExtension(pelicula.ArchivoDeVideo.FileName);
                 //fileNameVideo = fileNameVideo + DateTime.Now.ToString("yymmssff") + extensionVideo;

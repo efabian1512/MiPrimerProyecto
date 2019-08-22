@@ -37,14 +37,17 @@ namespace PeliculasEdwin.Controllers
         }
          public ActionResult BuscarPorAno(string ano)
         {
-            var modelo = db.PeliculasEdwin.Where(x => x.Año == ano).ToList();
-            return Json(modelo,JsonRequestBehavior.AllowGet);
+            //var modelo = db.PeliculasEdwin.Where(x => x.Año == ano).ToList();
+            //return Json(modelo,JsonRequestBehavior.AllowGet);
+            return View();
 
         }
 
         public ActionResult BuscarGenero(string Genero)
         {
-            
+            AnoServices year = new AnoServices();
+            ViewBag.Ano = year.ObtenerAno();
+
             var modelo1 = db.PeliculasEdwin.ToList();
             var modelo = db.PeliculasEdwin.Where(x => x.Género == Genero).ToList();
             if (modelo.Count > 0)
@@ -69,19 +72,29 @@ namespace PeliculasEdwin.Controllers
         }
        
        
-        public ActionResult About()
+        public ActionResult Estrenos()
         {
-            ViewBag.Message = "Your application description page.";
+          
+            AnoServices year = new AnoServices();
+            var MesActual = DateTime.Now.Month;
+            
+            ViewBag.Ano = year.ObtenerAno();
+            ViewBag.Inicio = " ";
+            var modelo = db.PeliculasEdwin.Where(x => x.Año.Month == MesActual).ToList();
 
-
-            return View();
+            //return View(modelo);
+            return View(modelo);
         }
 
-        public ActionResult Contact()
+        public ActionResult Anadidas()
         {
-            ViewBag.Message = "Your contact page.";
+            AnoServices year = new AnoServices();
+            ViewBag.Ano = year.ObtenerAno();
+            var EsteMes = DateTime.Now.Month;
+            ViewBag.Inicio = " ";
+            var modelo = db.PeliculasEdwin.Where(x => x.FechaDeAdicion.Month == EsteMes).ToList();
 
-            return View();
+            return View(modelo);
         }
         //Método get de la vista donde se registran las películas
         //[Authorize(Roles = "Editor,Administrador")]

@@ -1,0 +1,377 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <title>Index</title>
+    @*<meta charset="utf-8" />*@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @*<a href="~/Views/Home/Index.cshtml">~/Views/Home/Index.cshtml</a>*@
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-sclae=1.0">
+    <script src="https://kit.fontawesome.com/448095230c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="~/Content/estilos/estilos.css" rel="stylesheet" />
+    @*<title>@ViewBag.Title - Mi aplicación ASP.NET</title>*@
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+@*<body class="graycolor cen">*@
+<body class="graycolor">
+    @model List<Pelicula>
+
+    @*@{
+            ViewBag.Title = "Peliculas";
+        }*@
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Estrenos", "Estrenos", "Home")</li>
+            <li>@Html.ActionLink("Añadidas recientemente", "Anadidas", "Home")</li>
+            @*<li class="tamaño">@Html.ActionLink("Administrar", "Administrar", "Manage")*@
+            <li>
+                <a href=""> Administrar</a>
+                <ul>
+                    <li>
+                        <a href=""> Mantenimiento Películas</a>
+                        <ul>
+                            <li>@Html.ActionLink("Registrar pelicula", "RegistrarPelicula", "manage")</li>
+                            <li>@Html.ActionLink("Cargar videos", "CargarVideo", "manage")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""> Manejo de usuarios</a>
+                        <ul>
+                            <li>@Html.ActionLink("Usuarios", "Usuarios", "Manage")</li>
+                            <li>@Html.ActionLink("Crear Roles", "CrearRol", "Manage")</li>
+                            <li>@Html.ActionLink("Agregar Roles", "AsignarRol", "Manage")</li>
+                            <li>@Html.ActionLink("Quitar Roles", "DesAsignarRol", "Manage")</li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+        </ul>
+        @*@Html.Partial("_LoginPartial")*@
+
+    </nav>
+    <div class="divprincipal"
+    <div class="main">
+    <div class="middle">
+        <div class="menu5">
+            <!--<li class="item" id="profile">-->
+            <li class="item">
+               <a href="#" class="btn1"><i class="icono izquierda fas fa-video"></i> Géneros</a>
+                <!--<a href="#profile" class="btn"><i class="far fa-user"></i> Profile</a>-->
+                <div class="smenu">
+                @Html.ActionLink("Drama", "BuscarGenero", "Home", new { Genero = "Drama" }, null)
+                @Html.ActionLink("Fantasia", "BuscarGenero", "Home",new { Genero = "Fantasia" }, null)
+                @Html.ActionLink("Ficción", "BuscarGenero", "Home", new { Genero = "Ficcion" }, null)
+                @Html.ActionLink("Terror", "BuscarGenero", "Home", new { Genero = "Terror" }, null)
+        </div>
+
+            </li>
+
+            <!--<li class="item" id="messages">-->
+            <li class="item">
+
+                <a href="#" class="btn1"><i class="fas fa-calendar-alt"></i> Año</i></a>
+
+                <div class="smenu">
+                    <a href="#">
+                        <div class="customselect">
+                            <div class="select">
+
+
+                               @Html.DropDownList("Lista", (List<SelectListItem>)ViewBag.Ano, "Sin selección")
+
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </li>
+
+
+            <!--<li class="item" id="settings">-->
+            <li class="item">
+            <a href="#" class="btn1"><i class="fas fa-film"></i> Destacadas</a>
+            </li>
+
+            <li class="item">
+            <a href="#" class="btn1"><i class="fas fa-ticket-alt"></i> Tendencia</a>
+            </li>
+            <div>
+            </div>
+        </div>
+        </div>
+
+            <!--<div class="principal">
+             <div class="contenedor-menu">
+                 <a href="#" class="btn-menu">Menu<i class="fa fa-bars"></i></a>
+                 <ul class="menu">
+                     <li>
+                         <a href="#"><i class="icono izquierda fas fa-video"></i> Géneros<i class="icono derecha fa fa-chevron-down"></i></a>
+                         <ul>
+                             @*<li>@Html.ActionLink("Acción", "BuscarGenero", "Home",new { Genero="Acción" },null)</li>*@
+                             <li><a href="<!--https://www.youtube.com/watch?v=gnyYpX2nc1g-->
+
+            <!-- <li>-->@*@Html.ActionLink("Aventuras", "BuscarGenero", "Home", new { Genero = "Aventuras" },null)</li>
+                <li>@Html.ActionLink("Drama", "Usuarios", "Home", new {Genero="Drama" },null)</li>
+                <li>@Html.ActionLink("Fantasia", "BuscarGenero", "Home", null, new { Genero = "Fantasia" })</li>
+                <li>@Html.ActionLink("Ficción", "Usuarios", "Home", new {Ficcion ="Ficcion" },null)</li>
+                <li>@Html.ActionLink("Terror", "Usuarios", "Home",new {Terror="Terror" },null )</li>*@
+            <!--   </ul>
+                    </li>
+                    <li><a href="#"><i class="fas fa-film"></i> Destacadas</a></li>
+                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Tendencia</a></li>
+
+                        <ul>
+                            <li><a href="#">Item 1</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                            <li><a href="#">Item 4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </div>-->
+            @*<div class="container body-content">*@
+            <div>
+                @*<div class="container">*@
+                <div class="contenedorTitulo">
+                    @*<h2 class="text-blanco">Peliculas</h2>*@
+                    <h2 class="text-blanco">Peliculas Estreno</h2>
+
+                    <br />
+                    <br />
+                    <!--Cuadro de texto para realizar busqueda-->
+                    <input type="text" id="txtBuscar" size="30" placeholder="Buscar" class="form-control" />
+                    @*<input type="search" id="txtBuscar" size="30" placeholder="Buscar" />*@
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <h3 class="text-blanco">@ViewBag.Genero</h3>
+                </div>
+                <!--Contenedor para imprimir los actionslinks en forma de portada para cada pelicula-->
+
+                <div id="DataSearching" class="container2 clear">
+                    @*<ul id="UL" class="list-image2">
+
+                        </ul>*@
+                    <ul id="UL" class="list-image">
+
+                        @foreach (var imagenPelicula in Model)
+                        {
+                            <li> <a href="@Url.Action("Ver","Home",new {Id = imagenPelicula.Id })"><img src="@Url.Content(imagenPelicula.RutaDeImagen)" width="250" height="250" /></a></li>
+
+                        }
+
+                    </ul>
+                    <span id="regresar" class="blanco"></span>
+                    @if (ViewBag.Inicio != " ")
+                    {
+                        <div class="btn btn-primary">
+                            @Html.Partial((string)ViewBag.Inicio)
+                        </div>
+                    }
+
+                </div>
+            </div>
+            @*@{
+                    @Html.Partial("SideBar");
+                }*@
+
+
+            @*@section scripts*@
+            @*{*@
+            <script src="/Scripts/jquery-1.12.4.js"></script>
+
+            @*<script src="/Scripts/bootstrap.js"></script>*@
+            <script src="/Scripts/respond.js"></script>
+
+            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+            <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+            <script src="~/Scripts/jquery-ui.js"></script>
+            <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+            <!-- <script>
+                 $(document).ready(function () {
+                     $('.menu  li:has(ul)').click(function (e) {
+                         e.preventDefault();
+                         if ($(this).hasClass('activado')) {
+                             $(this).removeClass('activado');
+                             $(this).children('ul').slideUp();
+
+
+
+                         } else {
+                             $('.menu li ul').slideUp();
+                             $('.menu li').removeClass('activado');
+                             $(this).addClass('activado');
+                             $(this).children('ul').slideDown();
+                         }
+
+                     });
+
+                     $('.btn-menu').click(function () {
+                         $('.contenedor-menu .menu').slideToggle();
+                     });
+                     $(window).resize(function () {
+                         if ($(document).width() > 450) {
+                             $('.contenedor-menu .menu').css({ 'display': block });
+                         }
+                         if ($(document).width() < 450) {
+                             $('.contenedor-menu .menu').css({ 'display': none });
+                             $('.menu li ul').slideUp();
+                             $('.menu li').removeClass('activado');
+                         }
+
+                     });
+                 });
+
+
+             </script>-->
+        <script>
+            $(document).ready(function(){
+
+            $("select").change(function(){
+                var opcion = $("#Lista").val();
+                var select = $("#Lista");
+                var SetData = $("#DataSearching");
+                var regreso =$("#regresar");
+                var ul = $("#UL");
+                ul.html("");
+                $.ajax({
+                 type:"post",
+                 url: "/Home/BuscarPorAno?ano=" + opcion,
+                 contentType: "html",
+                  success: function (result) {
+                                if (result.length == 0) {
+                                    ul.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                    //SetData.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                } else {
+                                    $.each(result, function (indice, valor) {
+
+                                        var tamanio = valor.RutaDeImagen.length;
+                                        var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                        url = url.replace("parametro-id", valor.Id);
+                                        var content = ("@Url.Content("parametro-contenido")").toString();
+                                        content = content.replace("parametro-contenido", valor.RutaDeImagen);
+                                        content = content.substring(1, tamanio);
+                                        var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
+                                        //SetData.append(Data);
+                                        ul.append(Data);
+                                        var volverInicioUrl = "@Url.Action("Index","Home")";
+                                        var volverInicio = "<a href=\"" + volverInicioUrl + "\"" + ">" +"Click para regresar a todas las peliculas."+ "</a>";
+
+                                        //select.html("Sin seleccion");
+
+
+                                        regreso.append(volverInicio);
+
+
+
+
+
+                                    });
+                                }
+
+
+
+                            }
+                        });
+
+             });
+             });
+
+        </script>
+
+            <script>
+                //Programacion del evento keyup del cuadro de texto txtBuscar
+                $(document).ready(function () {
+                    $("#txtBuscar").keyup(function () {
+                        var ValorBusqueda = $("#txtBuscar").val();
+
+                        var SetData = $("#DataSearching");
+                        var ul = $("#UL");
+
+                        //SetData.html("");
+                        ul.html("");
+                        //SetData.html(ul);
+                        //Uso de Ajax para llamar al metodo de filtrado de peliculas
+                        $.ajax({
+                            type: "post",
+                            url: "/Home/BuscandoPeliculas?ValorBusqueda=" + ValorBusqueda,
+                            contentType: "html",
+                            success: function (result) {
+                                if (result.length == 0) {
+                                    ul.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                    //SetData.append('<span class=\"text-blanco\">No hay ninguna coincidencia.</span>');
+                                } else {
+                                    $.each(result, function (indice, valor) {
+
+                                        var tamanio = valor.RutaDeImagen.length;
+                                        var url = "@Url.Action("Ver","Home",new {Id="parametro-id" })";
+                                        url = url.replace("parametro-id", valor.Id);
+                                        var content = ("@Url.Content("parametro-contenido")").toString();
+                                        content = content.replace("parametro-contenido", valor.RutaDeImagen);
+                                        content = content.substring(1, tamanio);
+                                        var Data = "<li> <a href=\"" + url + "\"" + ">" + "<img src=\"" + content + "\"" + " width=" + "\"250\"" + " height=" + "\"250\" " + " />" + "</a></li>";
+                                        //SetData.append(Data);
+                                        ul.append(Data);
+
+
+
+
+
+
+
+                                    });
+                                }
+
+
+
+                            }
+                        });
+                    });
+                });
+
+
+
+            </script>
+            @*}*@
+
+
+            @*<div class="container body-content">
+                @RenderBody()
+                @*<hr />*@
+            @*<footer>
+                @*<p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>*@
+            @*</footer>*@
+            @*</div>*@
+            @Scripts.Render("~/bundles/jquery")
+            @*@Scripts.Render("~/bundles/bootstrap")*@
+
+            @*@RenderSection("scripts", required: false)*@
+            @*<style>
+                *{
+                    padding:10%;
+                    margin:10%;
+                }
+                </style>*@
+</body>
+</html>
