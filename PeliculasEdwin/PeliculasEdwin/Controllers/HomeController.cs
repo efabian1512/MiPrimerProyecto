@@ -43,6 +43,11 @@ namespace PeliculasEdwin.Controllers
 
         }
 
+        public void SumaReproduccionesPorMes(int cantidad)
+        {
+            var informacion = cantidad;
+        }
+
         public ActionResult BuscarGenero(string Genero)
         {
             AnoServices year = new AnoServices();

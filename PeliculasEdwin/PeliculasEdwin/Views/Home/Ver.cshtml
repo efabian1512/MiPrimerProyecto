@@ -84,7 +84,7 @@
 
 
 <div>
-    <video controls width="500" height="300">
+    <video controls width="500" height="300" id="etVideo" onplay="sumaReproducciones()">
    
        
         <source src="@Url.Content(Model.RutaDeVideo)" type="video/mp4" />
@@ -234,8 +234,32 @@
 
     </script>
     <script>
+        $(document).ready (function sumaReproducciones(){
+            var cantidad = cantidad + 1;
+            
+            $.ajax({
+                type:"post",
+                url: "/Home/SumaReproduccionesPorMes?cantidad=" + cantidad,
+                contentType: "html"
+
+            });
+        });
         
     </script>
+   <!--<script>
+        $(function(){
+            $('#etVideo').click(function(){
+                var cantidad = cantidad + 1;
+                $.ajax({
+                    type:"post",
+                    url: "/Home/SumaReproduccionesPorMes?cantidad=" + cantidad,
+                    contentType: "html"
+
+                });
+
+            })
+        })
+    </script>-->
     }
 
 
