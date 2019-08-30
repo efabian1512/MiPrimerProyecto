@@ -618,3 +618,4 @@ D:\la pagina\MiPrimerProyecto\PeliculasEdwin\PeliculasEdwin\obj\Debug\PeliculasE
 D:\la pagina\MiPrimerProyecto\PeliculasEdwin\PeliculasEdwin\obj\Debug\PeliculasEdwin.pdb
 G:\Proyecto\MiPrimerProyecto\PeliculasEdwin\PeliculasEdwin\obj\Debug\PeliculasEdwin.Migrations.CambioDeTipoCampoAño.resources
 G:\Proyecto\MiPrimerProyecto\PeliculasEdwin\PeliculasEdwin\obj\Debug\PeliculasEdwin.Migrations.AdicionCampoFechaDeacion.resources
+G:\Proyecto\MiPrimerProyecto\PeliculasEdwin\PeliculasEdwin\obj\Debug\PeliculasEdwin.Migrations.OtraColumnaMasTablaVisitas.resources

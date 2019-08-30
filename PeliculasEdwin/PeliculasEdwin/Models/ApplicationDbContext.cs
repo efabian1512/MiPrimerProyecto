@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PeliculasEdwin.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -49,6 +50,7 @@ namespace PeliculasEdwin.Models
         //DbSets o tablas
         public DbSet<Pelicula> PeliculasEdwin { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
+        public DbSet<Visita> Visitas { get; set; }
         //public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,6 +64,7 @@ namespace PeliculasEdwin.Models
             modelBuilder.Entity<Comentario>().HasRequired(x => x.Pelicula);
             //Nombre de tabla comentarios
             modelBuilder.Entity<Comentario>().ToTable("Comentarios");
+            modelBuilder.Entity<Visita>().HasRequired(x => x.Pelicula);
 
             
 

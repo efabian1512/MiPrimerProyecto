@@ -1,5 +1,6 @@
 ﻿using PeliculasEdwin.Models;
 using PeliculasEdwin.PeliculasServices;
+using PeliculasEdwin.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -110,8 +111,14 @@ namespace PeliculasEdwin.Controllers
         [HttpGet]
         public ActionResult Ver([Bind(Include = "Id")]Pelicula peliculaDetalles)
         {
-
+          
             var ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
+            var visita = new Visita() { FechaVisita = DateTime.Now, Pelicula = ModeloPelicula };
+            
+            visita.NumeroVisitas = visita.NumeroVisitas + 1;
+            db.Visitas.Add(visita);
+            db.SaveChanges();
+
             return View(ModeloPelicula);
         }
         //Método get de la vsta para editar películas

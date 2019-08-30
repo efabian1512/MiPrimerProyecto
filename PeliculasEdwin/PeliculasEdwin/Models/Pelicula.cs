@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using PeliculasEdwin.Services;
 
 namespace PeliculasEdwin.Models
 {
@@ -60,6 +61,8 @@ namespace PeliculasEdwin.Models
         public List<Comentario> Comentarios { get; set; }
         [Display(Name = "En Cartelera")]
         public DateTime FechaDeAdicion { get; set; }
+
+        public List<Visita> Visita { get; set; }
 
 
 

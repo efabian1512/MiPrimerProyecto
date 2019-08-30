@@ -277,6 +277,10 @@
     <Compile Include="Migrations\201908220243200_AdicionCampoFechaDeacion.Designer.cs">
       <DependentUpon>201908220243200_AdicionCampoFechaDeacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908300135286_OtraColumnaMasTablaVisitas.cs" />
+    <Compile Include="Migrations\201908300135286_OtraColumnaMasTablaVisitas.Designer.cs">
+      <DependentUpon>201908300135286_OtraColumnaMasTablaVisitas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -291,6 +295,7 @@
     <Compile Include="Models\Validaciones\ValidarCantidadCaracteresUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RolesServices.cs" />
+    <Compile Include="Services\Visitas.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
@@ -536,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908220243200_AdicionCampoFechaDeacion.resx">
       <DependentUpon>201908220243200_AdicionCampoFechaDeacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908300135286_OtraColumnaMasTablaVisitas.resx">
+      <DependentUpon>201908300135286_OtraColumnaMasTablaVisitas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
