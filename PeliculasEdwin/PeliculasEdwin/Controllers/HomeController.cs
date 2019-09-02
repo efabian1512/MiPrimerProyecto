@@ -113,14 +113,27 @@ namespace PeliculasEdwin.Controllers
         {
           
             var ModeloPelicula = db.PeliculasEdwin.Include("Comentarios").Where(x => x.Id == peliculaDetalles.Id).FirstOrDefault();
+           
             var visita = new Visita() { FechaVisita = DateTime.Now, Pelicula = ModeloPelicula };
-            
-            visita.NumeroVisitas = visita.NumeroVisitas + 1;
-            db.Visitas.Add(visita);
-            db.SaveChanges();
 
+            
+           
+            db.Visitas.Add(visita);
+            var VisitasPorPelicula = db.Visitas.ToList().GroupBy(x => x.Pelicula);
+            db.SaveChanges();
             return View(ModeloPelicula);
         }
+
+
+        /*public ActionResult Tendencias()
+        {
+            var VisitasPorPelicula = db.Visitas.ToList().GroupBy(x=>x.Pelicula);
+           
+
+            
+            
+
+        }*/
         //Método get de la vsta para editar películas
        // [Authorize(Roles = "Editor,Administrador")]//prueba
         [HttpGet]
